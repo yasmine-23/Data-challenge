@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://127.0.0.1:4428/data-challenge-table.Rmd -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">jquery[3.6.0];shiny-css[1.9.1];shiny-busy-indicators[1.9.1];shiny-javascript[1.9.1]</script>
+<script src="./Data challenge_files/jquery.min.js.télécharger"></script>
+<link href="./Data challenge_files/shiny.min.css" rel="stylesheet">
+<link href="./Data challenge_files/busy-indicators.css" rel="stylesheet">
+<script src="./Data challenge_files/shiny.min.js.télécharger"></script>  <script src="./Data challenge_files/rmd_loader.js.télécharger"></script>
+  <link href="./Data challenge_files/rmd_loader.css" rel="stylesheet">
+<script src="./Data challenge_files/header-attrs.js.télécharger"></script><meta name="viewport" content="width=device-width, initial-scale=1"><link href="./Data challenge_files/bootstrap.min.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/bootstrap.min.js.télécharger"></script><script src="./Data challenge_files/html5shiv.min.js.télécharger"></script><script src="./Data challenge_files/respond.min.js.télécharger"></script><style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style><script src="./Data challenge_files/tabsets.js.télécharger"></script><link href="./Data challenge_files/default.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/highlight.js.télécharger"></script><link href="./Data challenge_files/fill.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/htmlwidgets.js.télécharger"></script><link href="./Data challenge_files/datatables-crosstalk.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/datatables.js.télécharger"></script><link href="./Data challenge_files/jquery.dataTables.min.css" rel="stylesheet" type="text/css"><link href="./Data challenge_files/jquery.dataTables.extra.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/jquery.dataTables.min.js.télécharger"></script><script src="./Data challenge_files/jszip.min.js.télécharger"></script><script src="./Data challenge_files/pdfmake.js.télécharger"></script><script src="./Data challenge_files/vfs_fonts.js.télécharger"></script><link href="./Data challenge_files/buttons.dataTables.min.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/dataTables.buttons.min.js.télécharger"></script><script src="./Data challenge_files/buttons.html5.min.js.télécharger"></script><script src="./Data challenge_files/buttons.colVis.min.js.télécharger"></script><script src="./Data challenge_files/buttons.print.min.js.télécharger"></script><link href="./Data challenge_files/crosstalk.min.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/crosstalk.min.js.télécharger"></script><link href="./Data challenge_files/rmd_perf.css" rel="stylesheet" type="text/css"><script src="./Data challenge_files/rmd_perf.js.télécharger"></script><meta name="rstudio_origin" content="127.0.0.1:46713"><script src="./Data challenge_files/rsiframe.js.télécharger"></script>
+
+
+<meta name="generator" content="pandoc">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+
+
+
+<meta name="date" content="2024-12-06">
+
+<title>Data challenge</title>
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+<script type="text/javascript" src="./Data challenge_files/MathJax.js.télécharger"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+  <div>
+    <div class="shiny-panel-conditional" data-display-if="!output.__reactivedoc__" data-ns-prefix="" style="display: none;">
+      <div id="rmd_loader_wrapper">
+        <div id="rmd_loader" style="">
+          <p>Please wait...</p>
+          <img src="./Data challenge_files/rmd_loader.gif">
+        </div>
+      </div>
+    </div>
+    <div id="__reactivedoc__" class="shiny-html-output shiny-bound-output" aria-live="polite">
+
+
+
+
+
+
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div id="section-header">
+
+
+
+<h1 class="title toc-ignore">Data challenge</h1>
+<h4 class="date">2024-12-06</h4>
+
+</div>
+
+
+<p>Import des donnees, récupérer la liste des fichiers, puis les lire et
+les combiner :</p>
+<pre class="r"><code class="hljs">folder_path &lt;- <span class="hljs-string">"C:/Users/YOGA X390/OneDrive/Documents/data challenge/covid_data"</span>
+
+<span class="hljs-comment"># Obtenir la liste des fichiers CSV dans le dossier</span>
+
+file_list &lt;- list.files(path = folder_path, pattern = <span class="hljs-string">"\\.csv$"</span>, full.names = <span class="hljs-literal">TRUE</span>)
+
+<span class="hljs-comment"># Lire et combiner tous les fichiers CSV</span>
+<span class="hljs-keyword">library</span>(dplyr)</code></pre>
+<pre><code class="hljs">## 
+## Attachement du package : 'dplyr'</code></pre>
+<pre><code class="hljs">## Les objets suivants sont masqués depuis 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code class="hljs">## Les objets suivants sont masqués depuis 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code class="hljs">covid_data &lt;- lapply(file_list, read.csv, stringsAsFactors = <span class="hljs-literal">FALSE</span>) %&gt;%
+  bind_rows()  <span class="hljs-comment"># Combiner tous les fichiers en un seul DataFrame</span></code></pre>
+<p>Verifier les donnees combinees :</p>
+<pre class="r"><code class="hljs">dim(covid_data)       <span class="hljs-comment"># Dimensions du tableau</span></code></pre>
+<pre><code class="hljs">## [1] 3709419      21</code></pre>
+<pre class="r"><code class="hljs">head(covid_data)      <span class="hljs-comment"># Aperçu des premières lignes</span></code></pre>
+<pre><code class="hljs">##   FIPS Admin2 Province_State      Country_Region         Last_Update       Lat
+## 1   NA                               Afghanistan 2021-01-02 05:22:33  33.93911
+## 2   NA                                   Albania 2021-01-02 05:22:33  41.15330
+## 3   NA                                   Algeria 2021-01-02 05:22:33  28.03390
+## 4   NA                                   Andorra 2021-01-02 05:22:33  42.50630
+## 5   NA                                    Angola 2021-01-02 05:22:33 -11.20270
+## 6   NA                       Antigua and Barbuda 2021-01-02 05:22:33  17.06080
+##       Long_ Confirmed Deaths Recovered Active        Combined_Key Incident_Rate
+## 1  67.70995     52513   2201     41727   8585         Afghanistan     134.89658
+## 2  20.16830     58316   1181     33634  23501             Albania    2026.40906
+## 3   1.65960     99897   2762     67395  29740             Algeria     227.80986
+## 4   1.52180      8117     84      7463    570             Andorra   10505.40348
+## 5  17.87390     17568    405     11146   6017              Angola      53.45298
+## 6 -61.79640       159      5       148      6 Antigua and Barbuda     162.36419
+##   Case_Fatality_Ratio Province.State Country.Region Last.Update Latitude
+## 1            4.191343           &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;       NA
+## 2            2.025173           &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;       NA
+## 3            2.764848           &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;       NA
+## 4            1.034865           &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;       NA
+## 5            2.305328           &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;       NA
+## 6            3.144654           &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;       NA
+##   Longitude Incidence_Rate Case.Fatality_Ratio
+## 1        NA             NA                  NA
+## 2        NA             NA                  NA
+## 3        NA             NA                  NA
+## 4        NA             NA                  NA
+## 5        NA             NA                  NA
+## 6        NA             NA                  NA</code></pre>
+<pre class="r"><code class="hljs">str(covid_data)       <span class="hljs-comment"># Structure</span></code></pre>
+<pre><code class="hljs">## 'data.frame':    3709419 obs. of  21 variables:
+##  $ FIPS               : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Admin2             : chr  "" "" "" "" ...
+##  $ Province_State     : chr  "" "" "" "" ...
+##  $ Country_Region     : chr  "Afghanistan" "Albania" "Algeria" "Andorra" ...
+##  $ Last_Update        : chr  "2021-01-02 05:22:33" "2021-01-02 05:22:33" "2021-01-02 05:22:33" "2021-01-02 05:22:33" ...
+##  $ Lat                : num  33.9 41.2 28 42.5 -11.2 ...
+##  $ Long_              : num  67.71 20.17 1.66 1.52 17.87 ...
+##  $ Confirmed          : int  52513 58316 99897 8117 17568 159 1629594 159738 118 4947 ...
+##  $ Deaths             : int  2201 1181 2762 84 405 5 43319 2828 3 54 ...
+##  $ Recovered          : num  41727 33634 67395 7463 11146 ...
+##  $ Active             : int  8585 23501 29740 570 6017 6 159599 13555 1 4893 ...
+##  $ Combined_Key       : chr  "Afghanistan" "Albania" "Algeria" "Andorra" ...
+##  $ Incident_Rate      : num  134.9 2026.4 227.8 10505.4 53.5 ...
+##  $ Case_Fatality_Ratio: num  4.19 2.03 2.76 1.03 2.31 ...
+##  $ Province.State     : chr  NA NA NA NA ...
+##  $ Country.Region     : chr  NA NA NA NA ...
+##  $ Last.Update        : chr  NA NA NA NA ...
+##  $ Latitude           : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Longitude          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Incidence_Rate     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Case.Fatality_Ratio: num  NA NA NA NA NA NA NA NA NA NA ...</code></pre>
+<pre class="r"><code class="hljs">colnames(covid_data)</code></pre>
+<pre><code class="hljs">##  [1] "FIPS"                "Admin2"              "Province_State"     
+##  [4] "Country_Region"      "Last_Update"         "Lat"                
+##  [7] "Long_"               "Confirmed"           "Deaths"             
+## [10] "Recovered"           "Active"              "Combined_Key"       
+## [13] "Incident_Rate"       "Case_Fatality_Ratio" "Province.State"     
+## [16] "Country.Region"      "Last.Update"         "Latitude"           
+## [19] "Longitude"           "Incidence_Rate"      "Case.Fatality_Ratio"</code></pre>
+<p>Créer une table récapitulative :</p>
+<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(dplyr)
+<span class="hljs-keyword">library</span>(knitr)</code></pre>
+<pre><code class="hljs">## Warning: le package 'knitr' a été compilé avec la version R 4.4.2</code></pre>
+<pre class="r"><code class="hljs"><span class="hljs-comment"># Créer une table récapitulative</span>
+covid_summary &lt;- covid_data %&gt;%
+  group_by(Country_Region) %&gt;%
+  summarise(
+    cas_confirmes = sum(Confirmed, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_deces = sum(Deaths, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_retablis = sum(Recovered, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_actifs = sum(Active, na.rm = <span class="hljs-literal">TRUE</span>),
+    avg_case_fatality_ratio = mean(Case_Fatality_Ratio, na.rm = <span class="hljs-literal">TRUE</span>)
+  ) %&gt;%
+  arrange(desc(cas_confirmes))  <span class="hljs-comment"># Trier par nombre de cas confirmés</span>
+
+<span class="hljs-comment"># Afficher la table en format lisible</span>
+kable(covid_summary, caption = <span class="hljs-string">"Résumé des données COVID-19 par pays"</span>)</code></pre>
+<table style="width:100%;" class="table table-condensed">
+<caption>Résumé des données COVID-19 par pays</caption>
+<colgroup>
+<col width="31%">
+<col width="13%">
+<col width="9%">
+<col width="12%">
+<col width="10%">
+<col width="22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Country_Region</th>
+<th align="right">cas_confirmes</th>
+<th align="right">cas_deces</th>
+<th align="right">cas_retablis</th>
+<th align="right">cas_actifs</th>
+<th align="right">avg_case_fatality_ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">US</td>
+<td align="right">45915196090</td>
+<td align="right">609479472</td>
+<td align="right">343933934</td>
+<td align="right">2612616475</td>
+<td align="right">2.8064878</td>
+</tr>
+<tr class="even">
+<td align="left">India</td>
+<td align="right">24859862211</td>
+<td align="right">310005993</td>
+<td align="right">4420604416</td>
+<td align="right">311874594</td>
+<td align="right">1.1608141</td>
+</tr>
+<tr class="odd">
+<td align="left">Brazil</td>
+<td align="right">18091815884</td>
+<td align="right">416867520</td>
+<td align="right">3125707266</td>
+<td align="right">350619205</td>
+<td align="right">2.1425086</td>
+</tr>
+<tr class="even">
+<td align="left">France</td>
+<td align="right">13749771353</td>
+<td align="right">97205348</td>
+<td align="right">88092599</td>
+<td align="right">1020829537</td>
+<td align="right">0.6613201</td>
+</tr>
+<tr class="odd">
+<td align="left">Germany</td>
+<td align="right">11576745240</td>
+<td align="right">82477393</td>
+<td align="right">651873482</td>
+<td align="right">44118558</td>
+<td align="right">1.4523188</td>
+</tr>
+<tr class="even">
+<td align="left">United Kingdom</td>
+<td align="right">10346187853</td>
+<td align="right">138219985</td>
+<td align="right">3258202</td>
+<td align="right">996366265</td>
+<td align="right">0.8536197</td>
+</tr>
+<tr class="odd">
+<td align="left">Russia</td>
+<td align="right">8970383007</td>
+<td align="right">187082940</td>
+<td align="right">1034253749</td>
+<td align="right">123383263</td>
+<td align="right">2.1568163</td>
+</tr>
+<tr class="even">
+<td align="left">Italy</td>
+<td align="right">8572791407</td>
+<td align="right">109808929</td>
+<td align="right">713676833</td>
+<td align="right">95311609</td>
+<td align="right">1.8385310</td>
+</tr>
+<tr class="odd">
+<td align="left">Turkey</td>
+<td align="right">7540075713</td>
+<td align="right">53452389</td>
+<td align="right">871095281</td>
+<td align="right">44366822</td>
+<td align="right">0.7872751</td>
+</tr>
+<tr class="even">
+<td align="left">Korea, South</td>
+<td align="right">7115145810</td>
+<td align="right">9504579</td>
+<td align="right">26695249</td>
+<td align="right">2582723</td>
+<td align="right">0.7149408</td>
+</tr>
+<tr class="odd">
+<td align="left">Spain</td>
+<td align="right">6078145854</td>
+<td align="right">72519554</td>
+<td align="right">64041544</td>
+<td align="right">747313462</td>
+<td align="right">1.3914715</td>
+</tr>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="right">6004848072</td>
+<td align="right">18896929</td>
+<td align="right">122938726</td>
+<td align="right">10620390</td>
+<td align="right">0.8794377</td>
+</tr>
+<tr class="odd">
+<td align="left">Argentina</td>
+<td align="right">4828142355</td>
+<td align="right">77285048</td>
+<td align="right">649568342</td>
+<td align="right">67134902</td>
+<td align="right">1.7868145</td>
+</tr>
+<tr class="even">
+<td align="left">Iran</td>
+<td align="right">3905642623</td>
+<td align="right">85040508</td>
+<td align="right">485950082</td>
+<td align="right">68433307</td>
+<td align="right">2.3927767</td>
+</tr>
+<tr class="odd">
+<td align="left">Vietnam</td>
+<td align="right">3696442421</td>
+<td align="right">17833268</td>
+<td align="right">1202433</td>
+<td align="right">2242911</td>
+<td align="right">1.0507699</td>
+</tr>
+<tr class="even">
+<td align="left">Colombia</td>
+<td align="right">3600421515</td>
+<td align="right">85842464</td>
+<td align="right">672706081</td>
+<td align="right">39612851</td>
+<td align="right">3.9755024</td>
+</tr>
+<tr class="odd">
+<td align="left">Netherlands</td>
+<td align="right">3524608838</td>
+<td align="right">15607994</td>
+<td align="right">4772005</td>
+<td align="right">314243012</td>
+<td align="right">0.6814951</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">3355555433</td>
+<td align="right">205701649</td>
+<td align="right">455522953</td>
+<td align="right">448751393</td>
+<td align="right">7.6361522</td>
+</tr>
+<tr class="odd">
+<td align="left">Indonesia</td>
+<td align="right">3139408174</td>
+<td align="right">84876312</td>
+<td align="right">340554557</td>
+<td align="right">47450865</td>
+<td align="right">2.7515225</td>
+</tr>
+<tr class="even">
+<td align="left">Poland</td>
+<td align="right">3110674329</td>
+<td align="right">64979295</td>
+<td align="right">453547157</td>
+<td align="right">56633676</td>
+<td align="right">2.1956355</td>
+</tr>
+<tr class="odd">
+<td align="left">Australia</td>
+<td align="right">2976969743</td>
+<td align="right">4659852</td>
+<td align="right">7738253</td>
+<td align="right">2174260</td>
+<td align="right">0.8468031</td>
+</tr>
+<tr class="even">
+<td align="left">Ukraine</td>
+<td align="right">2703512202</td>
+<td align="right">59837031</td>
+<td align="right">360331998</td>
+<td align="right">55500315</td>
+<td align="right">2.2596230</td>
+</tr>
+<tr class="odd">
+<td align="left">South Africa</td>
+<td align="right">2227911582</td>
+<td align="right">60679478</td>
+<td align="right">396757596</td>
+<td align="right">31513474</td>
+<td align="right">2.8332816</td>
+</tr>
+<tr class="even">
+<td align="left">Peru</td>
+<td align="right">2137375957</td>
+<td align="right">146291502</td>
+<td align="right">414848124</td>
+<td align="right">406278580</td>
+<td align="right">6.8472272</td>
+</tr>
+<tr class="odd">
+<td align="left">Czechia</td>
+<td align="right">2086031324</td>
+<td align="right">24189400</td>
+<td align="right">294557059</td>
+<td align="right">22349729</td>
+<td align="right">1.3625486</td>
+</tr>
+<tr class="even">
+<td align="left">Portugal</td>
+<td align="right">2067049956</td>
+<td align="right">14606244</td>
+<td align="right">165428724</td>
+<td align="right">17412682</td>
+<td align="right">1.1450389</td>
+</tr>
+<tr class="odd">
+<td align="left">Malaysia</td>
+<td align="right">2002648622</td>
+<td align="right">16463035</td>
+<td align="right">161424835</td>
+<td align="right">23876619</td>
+<td align="right">0.7539329</td>
+</tr>
+<tr class="even">
+<td align="left">Chile</td>
+<td align="right">2002594516</td>
+<td align="right">32583157</td>
+<td align="right">290324260</td>
+<td align="right">15465641</td>
+<td align="right">1.5235660</td>
+</tr>
+<tr class="odd">
+<td align="left">Belgium</td>
+<td align="right">1940440341</td>
+<td align="right">21974147</td>
+<td align="right">3797592</td>
+<td align="right">214009928</td>
+<td align="right">7.4232010</td>
+</tr>
+<tr class="even">
+<td align="left">Canada</td>
+<td align="right">1937248680</td>
+<td align="right">25879714</td>
+<td align="right">247310150</td>
+<td align="right">14738878</td>
+<td align="right">0.8890794</td>
+</tr>
+<tr class="odd">
+<td align="left">Philippines</td>
+<td align="right">1930344830</td>
+<td align="right">31475048</td>
+<td align="right">213269090</td>
+<td align="right">20838211</td>
+<td align="right">1.6812138</td>
+</tr>
+<tr class="even">
+<td align="left">Israel</td>
+<td align="right">1912908214</td>
+<td align="right">6450312</td>
+<td align="right">182020709</td>
+<td align="right">9531097</td>
+<td align="right">0.4758357</td>
+</tr>
+<tr class="odd">
+<td align="left">Austria</td>
+<td align="right">1871782353</td>
+<td align="right">11714381</td>
+<td align="right">119939483</td>
+<td align="right">5168300</td>
+<td align="right">1.0042311</td>
+</tr>
+<tr class="even">
+<td align="left">Thailand</td>
+<td align="right">1766592982</td>
+<td align="right">13049958</td>
+<td align="right">5720086</td>
+<td align="right">22442409</td>
+<td align="right">0.7081562</td>
+</tr>
+<tr class="odd">
+<td align="left">Greece</td>
+<td align="right">1651233652</td>
+<td align="right">15196502</td>
+<td align="right">20836619</td>
+<td align="right">45473562</td>
+<td align="right">1.7577602</td>
+</tr>
+<tr class="even">
+<td align="left">Switzerland</td>
+<td align="right">1634777822</td>
+<td align="right">9019257</td>
+<td align="right">76831972</td>
+<td align="right">66522196</td>
+<td align="right">0.9263089</td>
+</tr>
+<tr class="odd">
+<td align="left">Taiwan*</td>
+<td align="right">1561275052</td>
+<td align="right">2935118</td>
+<td align="right">773679</td>
+<td align="right">428711</td>
+<td align="right">2.0559490</td>
+</tr>
+<tr class="even">
+<td align="left">Romania</td>
+<td align="right">1492241477</td>
+<td align="right">35378078</td>
+<td align="right">202199149</td>
+<td align="right">12441080</td>
+<td align="right">2.5033483</td>
+</tr>
+<tr class="odd">
+<td align="left">Iraq</td>
+<td align="right">1363751225</td>
+<td align="right">16183901</td>
+<td align="right">226669927</td>
+<td align="right">22250938</td>
+<td align="right">1.2490427</td>
+</tr>
+<tr class="even">
+<td align="left">Sweden</td>
+<td align="right">1271059366</td>
+<td align="right">12961196</td>
+<td align="right">160005</td>
+<td align="right">196780099</td>
+<td align="right">1.0800919</td>
+</tr>
+<tr class="odd">
+<td align="left">Denmark</td>
+<td align="right">1266132630</td>
+<td align="right">3372810</td>
+<td align="right">54131365</td>
+<td align="right">2962953</td>
+<td align="right">0.2428229</td>
+</tr>
+<tr class="even">
+<td align="left">Slovakia</td>
+<td align="right">1160733354</td>
+<td align="right">10988984</td>
+<td align="right">52978227</td>
+<td align="right">89381552</td>
+<td align="right">1.1048811</td>
+</tr>
+<tr class="odd">
+<td align="left">Bangladesh</td>
+<td align="right">1112933321</td>
+<td align="right">17010438</td>
+<td align="right">171511340</td>
+<td align="right">29454126</td>
+<td align="right">1.5423282</td>
+</tr>
+<tr class="even">
+<td align="left">Serbia</td>
+<td align="right">1041800951</td>
+<td align="right">8404958</td>
+<td align="right">733299</td>
+<td align="right">130995636</td>
+<td align="right">0.8527526</td>
+</tr>
+<tr class="odd">
+<td align="left">Hungary</td>
+<td align="right">972387293</td>
+<td align="right">25864729</td>
+<td align="right">107732806</td>
+<td align="right">28531796</td>
+<td align="right">2.9116276</td>
+</tr>
+<tr class="even">
+<td align="left">China</td>
+<td align="right">958448685</td>
+<td align="right">12008865</td>
+<td align="right">40088804</td>
+<td align="right">387626</td>
+<td align="right">0.6258509</td>
+</tr>
+<tr class="odd">
+<td align="left">Pakistan</td>
+<td align="right">921974858</td>
+<td align="right">19021795</td>
+<td align="right">188634294</td>
+<td align="right">17055189</td>
+<td align="right">1.8723519</td>
+</tr>
+<tr class="even">
+<td align="left">Jordan</td>
+<td align="right">848809010</td>
+<td align="right">8063778</td>
+<td align="right">120006065</td>
+<td align="right">7896455</td>
+<td align="right">1.0412075</td>
+</tr>
+<tr class="odd">
+<td align="left">Georgia</td>
+<td align="right">762735994</td>
+<td align="right">8131201</td>
+<td align="right">64802983</td>
+<td align="right">2787979</td>
+<td align="right">1.1700368</td>
+</tr>
+<tr class="even">
+<td align="left">Kazakhstan</td>
+<td align="right">734060305</td>
+<td align="right">10257334</td>
+<td align="right">83764813</td>
+<td align="right">10554978</td>
+<td align="right">1.4463174</td>
+</tr>
+<tr class="odd">
+<td align="left">Ireland</td>
+<td align="right">687386429</td>
+<td align="right">4711637</td>
+<td align="right">9590805</td>
+<td align="right">47038884</td>
+<td align="right">1.0532697</td>
+</tr>
+<tr class="even">
+<td align="left">Morocco</td>
+<td align="right">678283861</td>
+<td align="right">9696788</td>
+<td align="right">116474718</td>
+<td align="right">4576753</td>
+<td align="right">1.4873306</td>
+</tr>
+<tr class="odd">
+<td align="left">Singapore</td>
+<td align="right">603512053</td>
+<td align="right">572113</td>
+<td align="right">21509807</td>
+<td align="right">1368464</td>
+<td align="right">0.0961632</td>
+</tr>
+<tr class="even">
+<td align="left">Lebanon</td>
+<td align="right">597622371</td>
+<td align="right">6174835</td>
+<td align="right">86141790</td>
+<td align="right">14404742</td>
+<td align="right">1.0941269</td>
+</tr>
+<tr class="odd">
+<td align="left">Bulgaria</td>
+<td align="right">580190397</td>
+<td align="right">19435134</td>
+<td align="right">65079604</td>
+<td align="right">8843938</td>
+<td align="right">3.5848777</td>
+</tr>
+<tr class="even">
+<td align="left">Norway</td>
+<td align="right">559838540</td>
+<td align="right">1589085</td>
+<td align="right">5568480</td>
+<td align="right">18444528</td>
+<td align="right">0.4319347</td>
+</tr>
+<tr class="odd">
+<td align="left">United Arab Emirates</td>
+<td align="right">559116147</td>
+<td align="right">1482110</td>
+<td align="right">111122933</td>
+<td align="right">6039842</td>
+<td align="right">0.2676133</td>
+</tr>
+<tr class="even">
+<td align="left">Nepal</td>
+<td align="right">554495085</td>
+<td align="right">6814656</td>
+<td align="right">88201871</td>
+<td align="right">9303839</td>
+<td align="right">1.2048630</td>
+</tr>
+<tr class="odd">
+<td align="left">Croatia</td>
+<td align="right">549740247</td>
+<td align="right">8574673</td>
+<td align="right">64235886</td>
+<td align="right">1646522</td>
+<td align="right">1.7576979</td>
+</tr>
+<tr class="even">
+<td align="left">Tunisia</td>
+<td align="right">549719045</td>
+<td align="right">15802100</td>
+<td align="right">57338961</td>
+<td align="right">10459433</td>
+<td align="right">3.0400542</td>
+</tr>
+<tr class="odd">
+<td align="left">Cuba</td>
+<td align="right">526181720</td>
+<td align="right">4127617</td>
+<td align="right">23530208</td>
+<td align="right">2283313</td>
+<td align="right">0.7670553</td>
+</tr>
+<tr class="even">
+<td align="left">Lithuania</td>
+<td align="right">519496685</td>
+<td align="right">4792233</td>
+<td align="right">46494088</td>
+<td align="right">3794164</td>
+<td align="right">1.1637055</td>
+</tr>
+<tr class="odd">
+<td align="left">Bolivia</td>
+<td align="right">518280203</td>
+<td align="right">13969013</td>
+<td align="right">63922001</td>
+<td align="right">15840791</td>
+<td align="right">3.1219870</td>
+</tr>
+<tr class="even">
+<td align="left">Belarus</td>
+<td align="right">506716081</td>
+<td align="right">3703891</td>
+<td align="right">81964801</td>
+<td align="right">3755102</td>
+<td align="right">0.7308097</td>
+</tr>
+<tr class="odd">
+<td align="left">Ecuador</td>
+<td align="right">500247870</td>
+<td align="right">22458075</td>
+<td align="right">81264473</td>
+<td align="right">9319153</td>
+<td align="right">4.7588342</td>
+</tr>
+<tr class="even">
+<td align="left">New Zealand</td>
+<td align="right">493361846</td>
+<td align="right">508494</td>
+<td align="right">868509</td>
+<td align="right">42656</td>
+<td align="right">0.1744813</td>
+</tr>
+<tr class="odd">
+<td align="left">Saudi Arabia</td>
+<td align="right">492952648</td>
+<td align="right">6526394</td>
+<td align="right">129415206</td>
+<td align="right">7187761</td>
+<td align="right">1.3986119</td>
+</tr>
+<tr class="even">
+<td align="left">Costa Rica</td>
+<td align="right">487656355</td>
+<td align="right">4751745</td>
+<td align="right">50518647</td>
+<td align="right">13689856</td>
+<td align="right">1.0780473</td>
+</tr>
+<tr class="odd">
+<td align="left">Guatemala</td>
+<td align="right">486724331</td>
+<td align="right">10453764</td>
+<td align="right">52377538</td>
+<td align="right">4841756</td>
+<td align="right">2.4719709</td>
+</tr>
+<tr class="even">
+<td align="left">Slovenia</td>
+<td align="right">485425098</td>
+<td align="right">3913333</td>
+<td align="right">44971676</td>
+<td align="right">2695592</td>
+<td align="right">1.1597596</td>
+</tr>
+<tr class="odd">
+<td align="left">Panama</td>
+<td align="right">478099233</td>
+<td align="right">5507526</td>
+<td align="right">83318547</td>
+<td align="right">6868057</td>
+<td align="right">1.2681949</td>
+</tr>
+<tr class="even">
+<td align="left">Finland</td>
+<td align="right">450169920</td>
+<td align="right">2318405</td>
+<td align="right">10686570</td>
+<td align="right">7362202</td>
+<td align="right">0.7290335</td>
+</tr>
+<tr class="odd">
+<td align="left">Uruguay</td>
+<td align="right">431289674</td>
+<td align="right">3976057</td>
+<td align="right">36483341</td>
+<td align="right">3656211</td>
+<td align="right">1.0567182</td>
+</tr>
+<tr class="even">
+<td align="left">Azerbaijan</td>
+<td align="right">418145771</td>
+<td align="right">5310886</td>
+<td align="right">63789249</td>
+<td align="right">2988877</td>
+<td align="right">1.3005526</td>
+</tr>
+<tr class="odd">
+<td align="left">Mongolia</td>
+<td align="right">407454593</td>
+<td align="right">971809</td>
+<td align="right">8079804</td>
+<td align="right">2042803</td>
+<td align="right">0.2850834</td>
+</tr>
+<tr class="even">
+<td align="left">Paraguay</td>
+<td align="right">371671881</td>
+<td align="right">10495902</td>
+<td align="right">51766671</td>
+<td align="right">8653922</td>
+<td align="right">2.7684972</td>
+</tr>
+<tr class="odd">
+<td align="left">Kuwait</td>
+<td align="right">354609276</td>
+<td align="right">1639686</td>
+<td align="right">65470603</td>
+<td align="right">4533043</td>
+<td align="right">0.4859868</td>
+</tr>
+<tr class="even">
+<td align="left">Latvia</td>
+<td align="right">352107461</td>
+<td align="right">2927366</td>
+<td align="right">21232748</td>
+<td align="right">1689966</td>
+<td align="right">1.2228560</td>
+</tr>
+<tr class="odd">
+<td align="left">West Bank and Gaza</td>
+<td align="right">351785397</td>
+<td align="right">3205458</td>
+<td align="right">53797059</td>
+<td align="right">3611245</td>
+<td align="right">0.9622839</td>
+</tr>
+<tr class="even">
+<td align="left">Dominican Republic</td>
+<td align="right">341856841</td>
+<td align="right">3079280</td>
+<td align="right">56934246</td>
+<td align="right">13551792</td>
+<td align="right">0.9520793</td>
+</tr>
+<tr class="odd">
+<td align="left">Sri Lanka</td>
+<td align="right">333354025</td>
+<td align="right">7753487</td>
+<td align="right">27720107</td>
+<td align="right">3487077</td>
+<td align="right">1.9227988</td>
+</tr>
+<tr class="even">
+<td align="left">Burma</td>
+<td align="right">314335686</td>
+<td align="right">9983583</td>
+<td align="right">30447469</td>
+<td align="right">4515407</td>
+<td align="right">2.9915241</td>
+</tr>
+<tr class="odd">
+<td align="left">Bahrain</td>
+<td align="right">306263032</td>
+<td align="right">909696</td>
+<td align="right">44468775</td>
+<td align="right">2634251</td>
+<td align="right">0.3403655</td>
+</tr>
+<tr class="even">
+<td align="left">Moldova</td>
+<td align="right">290835738</td>
+<td align="right">6409106</td>
+<td align="right">49769058</td>
+<td align="right">3428317</td>
+<td align="right">2.2240584</td>
+</tr>
+<tr class="odd">
+<td align="left">Venezuela</td>
+<td align="right">288945511</td>
+<td align="right">3156037</td>
+<td align="right">45068323</td>
+<td align="right">3652408</td>
+<td align="right">1.0890003</td>
+</tr>
+<tr class="even">
+<td align="left">Egypt</td>
+<td align="right">286543264</td>
+<td align="right">14731674</td>
+<td align="right">46627143</td>
+<td align="right">12846104</td>
+<td align="right">5.2858950</td>
+</tr>
+<tr class="odd">
+<td align="left">Ethiopia</td>
+<td align="right">273869308</td>
+<td align="right">4261560</td>
+<td align="right">43944722</td>
+<td align="right">9673326</td>
+<td align="right">1.5487890</td>
+</tr>
+<tr class="even">
+<td align="left">Libya</td>
+<td align="right">262261347</td>
+<td align="right">3537503</td>
+<td align="right">33207599</td>
+<td align="right">5264245</td>
+<td align="right">1.4055126</td>
+</tr>
+<tr class="odd">
+<td align="left">Honduras</td>
+<td align="right">257068607</td>
+<td align="right">6564850</td>
+<td align="right">19250415</td>
+<td align="right">32960883</td>
+<td align="right">2.5444998</td>
+</tr>
+<tr class="even">
+<td align="left">Estonia</td>
+<td align="right">250091660</td>
+<td align="right">1338819</td>
+<td align="right">19261331</td>
+<td align="right">2380201</td>
+<td align="right">0.6750504</td>
+</tr>
+<tr class="odd">
+<td align="left">Armenia</td>
+<td align="right">241012048</td>
+<td align="right">4808199</td>
+<td align="right">46095094</td>
+<td align="right">3835756</td>
+<td align="right">1.9862288</td>
+</tr>
+<tr class="even">
+<td align="left">Qatar</td>
+<td align="right">240774875</td>
+<td align="right">439386</td>
+<td align="right">57184802</td>
+<td align="right">3656351</td>
+<td align="right">0.1942533</td>
+</tr>
+<tr class="odd">
+<td align="left">Oman</td>
+<td align="right">233680010</td>
+<td align="right">2696868</td>
+<td align="right">48830851</td>
+<td align="right">5134534</td>
+<td align="right">1.1701913</td>
+</tr>
+<tr class="even">
+<td align="left">Cyprus</td>
+<td align="right">216740390</td>
+<td align="right">530992</td>
+<td align="right">5015465</td>
+<td align="right">7646127</td>
+<td align="right">0.3514875</td>
+</tr>
+<tr class="odd">
+<td align="left">Bosnia and Herzegovina</td>
+<td align="right">210449393</td>
+<td align="right">8808901</td>
+<td align="right">33094892</td>
+<td align="right">5685459</td>
+<td align="right">4.2100769</td>
+</tr>
+<tr class="even">
+<td align="left">Kenya</td>
+<td align="right">188167415</td>
+<td align="right">3324897</td>
+<td align="right">26737385</td>
+<td align="right">8608475</td>
+<td align="right">1.7780613</td>
+</tr>
+<tr class="odd">
+<td align="left">North Macedonia</td>
+<td align="right">172154043</td>
+<td align="right">5242214</td>
+<td align="right">27276154</td>
+<td align="right">2549167</td>
+<td align="right">3.0932647</td>
+</tr>
+<tr class="even">
+<td align="left">Zambia</td>
+<td align="right">168666336</td>
+<td align="right">2244731</td>
+<td align="right">21022460</td>
+<td align="right">1451120</td>
+<td align="right">1.3717818</td>
+</tr>
+<tr class="odd">
+<td align="left">Nigeria</td>
+<td align="right">161444066</td>
+<td align="right">2049913</td>
+<td align="right">36344685</td>
+<td align="right">4307643</td>
+<td align="right">1.2425812</td>
+</tr>
+<tr class="even">
+<td align="left">Albania</td>
+<td align="right">157761564</td>
+<td align="right">2119395</td>
+<td align="right">21564947</td>
+<td align="right">4494478</td>
+<td align="right">1.4548961</td>
+</tr>
+<tr class="odd">
+<td align="left">Algeria</td>
+<td align="right">155377580</td>
+<td align="right">4157183</td>
+<td align="right">22937399</td>
+<td align="right">9341446</td>
+<td align="right">2.6358179</td>
+</tr>
+<tr class="even">
+<td align="left">Botswana</td>
+<td align="right">145326003</td>
+<td align="right">1419257</td>
+<td align="right">9257679</td>
+<td align="right">1208238</td>
+<td align="right">1.0631217</td>
+</tr>
+<tr class="odd">
+<td align="left">Uzbekistan</td>
+<td align="right">135371929</td>
+<td align="right">936465</td>
+<td align="right">24865026</td>
+<td align="right">1161652</td>
+<td align="right">0.6995480</td>
+</tr>
+<tr class="even">
+<td align="left">Montenegro</td>
+<td align="right">130254644</td>
+<td align="right">1536506</td>
+<td align="right">18272705</td>
+<td align="right">1309675</td>
+<td align="right">1.2630217</td>
+</tr>
+<tr class="odd">
+<td align="left">Kosovo</td>
+<td align="right">129843220</td>
+<td align="right">1973236</td>
+<td align="right">18872215</td>
+<td align="right">1707569</td>
+<td align="right">1.6755282</td>
+</tr>
+<tr class="even">
+<td align="left">Kyrgyzstan</td>
+<td align="right">123712659</td>
+<td align="right">1909194</td>
+<td align="right">25213115</td>
+<td align="right">2153878</td>
+<td align="right">1.5259174</td>
+</tr>
+<tr class="odd">
+<td align="left">Luxembourg</td>
+<td align="right">120621945</td>
+<td align="right">687433</td>
+<td align="right">14116275</td>
+<td align="right">840251</td>
+<td align="right">0.7596968</td>
+</tr>
+<tr class="even">
+<td align="left">Zimbabwe</td>
+<td align="right">119674131</td>
+<td align="right">2948008</td>
+<td align="right">8335929</td>
+<td align="right">1504577</td>
+<td align="right">2.8655298</td>
+</tr>
+<tr class="odd">
+<td align="left">Mozambique</td>
+<td align="right">117454922</td>
+<td align="right">1203860</td>
+<td align="right">12445532</td>
+<td align="right">2408924</td>
+<td align="right">1.0518980</td>
+</tr>
+<tr class="even">
+<td align="left">Afghanistan</td>
+<td align="right">110230524</td>
+<td align="right">4603179</td>
+<td align="right">16473220</td>
+<td align="right">5191488</td>
+<td align="right">4.2602351</td>
+</tr>
+<tr class="odd">
+<td align="left">Ghana</td>
+<td align="right">100693018</td>
+<td align="right">849354</td>
+<td align="right">23439437</td>
+<td align="right">1158620</td>
+<td align="right">0.8436823</td>
+</tr>
+<tr class="even">
+<td align="left">El Salvador</td>
+<td align="right">96161959</td>
+<td align="right">2456465</td>
+<td align="right">15825923</td>
+<td align="right">1642341</td>
+<td align="right">2.6969490</td>
+</tr>
+<tr class="odd">
+<td align="left">Namibia</td>
+<td align="right">89391054</td>
+<td align="right">2103125</td>
+<td align="right">11207788</td>
+<td align="right">1741328</td>
+<td align="right">2.1536734</td>
+</tr>
+<tr class="even">
+<td align="left">Mauritius</td>
+<td align="right">88666008</td>
+<td align="right">392123</td>
+<td align="right">279811</td>
+<td align="right">79114</td>
+<td align="right">0.7791562</td>
+</tr>
+<tr class="odd">
+<td align="left">Uganda</td>
+<td align="right">88046900</td>
+<td align="right">1849640</td>
+<td align="right">8302672</td>
+<td align="right">3538233</td>
+<td align="right">1.8917923</td>
+</tr>
+<tr class="even">
+<td align="left">Maldives</td>
+<td align="right">85538924</td>
+<td align="right">167189</td>
+<td align="right">8323992</td>
+<td align="right">1420862</td>
+<td align="right">0.2247719</td>
+</tr>
+<tr class="odd">
+<td align="left">Laos</td>
+<td align="right">77835463</td>
+<td align="right">276622</td>
+<td align="right">166501</td>
+<td align="right">92772</td>
+<td align="right">0.2314712</td>
+</tr>
+<tr class="even">
+<td align="left">Iceland</td>
+<td align="right">71217895</td>
+<td align="right">71736</td>
+<td align="right">1806758</td>
+<td align="right">107312</td>
+<td align="right">0.2311848</td>
+</tr>
+<tr class="odd">
+<td align="left">Cameroon</td>
+<td align="right">71071285</td>
+<td align="right">1156546</td>
+<td align="right">9783508</td>
+<td align="right">5516596</td>
+<td align="right">1.5977653</td>
+</tr>
+<tr class="even">
+<td align="left">Trinidad and Tobago</td>
+<td align="right">70710231</td>
+<td align="right">1757695</td>
+<td align="right">3061856</td>
+<td align="right">832013</td>
+<td align="right">2.4099044</td>
+</tr>
+<tr class="odd">
+<td align="left">Jamaica</td>
+<td align="right">70335158</td>
+<td align="right">1545638</td>
+<td align="right">5073109</td>
+<td align="right">3372383</td>
+<td align="right">2.1546484</td>
+</tr>
+<tr class="even">
+<td align="left">Brunei</td>
+<td align="right">67100218</td>
+<td align="right">82654</td>
+<td align="right">75705</td>
+<td align="right">4911</td>
+<td align="right">0.6143066</td>
+</tr>
+<tr class="odd">
+<td align="left">Cambodia</td>
+<td align="right">66994639</td>
+<td align="right">1455955</td>
+<td align="right">3645503</td>
+<td align="right">832882</td>
+<td align="right">1.7224839</td>
+</tr>
+<tr class="even">
+<td align="left">Rwanda</td>
+<td align="right">66130853</td>
+<td align="right">758393</td>
+<td align="right">5136280</td>
+<td align="right">1194223</td>
+<td align="right">1.1905607</td>
+</tr>
+<tr class="odd">
+<td align="left">Angola</td>
+<td align="right">51037681</td>
+<td align="right">1038663</td>
+<td align="right">5486731</td>
+<td align="right">977297</td>
+<td align="right">2.1308476</td>
+</tr>
+<tr class="even">
+<td align="left">Senegal</td>
+<td align="right">51031625</td>
+<td align="right">1188203</td>
+<td align="right">8985479</td>
+<td align="right">1022111</td>
+<td align="right">2.3804706</td>
+</tr>
+<tr class="odd">
+<td align="left">Cote d’Ivoire</td>
+<td align="right">49787227</td>
+<td align="right">438382</td>
+<td align="right">10739979</td>
+<td align="right">660774</td>
+<td align="right">0.8464584</td>
+</tr>
+<tr class="even">
+<td align="left">Congo (Kinshasa)</td>
+<td align="right">48612449</td>
+<td align="right">847846</td>
+<td align="right">6275548</td>
+<td align="right">1754349</td>
+<td align="right">1.9198339</td>
+</tr>
+<tr class="odd">
+<td align="left">Malta</td>
+<td align="right">47915215</td>
+<td align="right">408361</td>
+<td align="right">5677891</td>
+<td align="right">404621</td>
+<td align="right">1.0147607</td>
+</tr>
+<tr class="even">
+<td align="left">Malawi</td>
+<td align="right">47056192</td>
+<td align="right">1483141</td>
+<td align="right">6020592</td>
+<td align="right">1336094</td>
+<td align="right">3.1769408</td>
+</tr>
+<tr class="odd">
+<td align="left">Madagascar</td>
+<td align="right">37876468</td>
+<td align="right">776864</td>
+<td align="right">7919407</td>
+<td align="right">499621</td>
+<td align="right">2.0322721</td>
+</tr>
+<tr class="even">
+<td align="left">Suriname</td>
+<td align="right">37658531</td>
+<td align="right">679256</td>
+<td align="right">2853993</td>
+<td align="right">395412</td>
+<td align="right">1.9064336</td>
+</tr>
+<tr class="odd">
+<td align="left">Sudan</td>
+<td align="right">36809899</td>
+<td align="right">2724807</td>
+<td align="right">6424874</td>
+<td align="right">2085883</td>
+<td align="right">7.3516698</td>
+</tr>
+<tr class="even">
+<td align="left">Eswatini</td>
+<td align="right">36552996</td>
+<td align="right">804907</td>
+<td align="right">3861183</td>
+<td align="right">429146</td>
+<td align="right">2.5339073</td>
+</tr>
+<tr class="odd">
+<td align="left">Barbados</td>
+<td align="right">33380737</td>
+<td align="right">195190</td>
+<td align="right">679591</td>
+<td align="right">49766</td>
+<td align="right">0.7987804</td>
+</tr>
+<tr class="even">
+<td align="left">Cabo Verde</td>
+<td align="right">32127267</td>
+<td align="right">240355</td>
+<td align="right">5178661</td>
+<td align="right">358688</td>
+<td align="right">0.7878108</td>
+</tr>
+<tr class="odd">
+<td align="left">Mauritania</td>
+<td align="right">31866557</td>
+<td align="right">575585</td>
+<td align="right">4633009</td>
+<td align="right">303597</td>
+<td align="right">1.9512485</td>
+</tr>
+<tr class="even">
+<td align="left">Guyana</td>
+<td align="right">31861066</td>
+<td align="right">630615</td>
+<td align="right">2734519</td>
+<td align="right">331414</td>
+<td align="right">2.1080308</td>
+</tr>
+<tr class="odd">
+<td align="left">Fiji</td>
+<td align="right">30978925</td>
+<td align="right">390837</td>
+<td align="right">174555</td>
+<td align="right">510806</td>
+<td align="right">1.5937848</td>
+</tr>
+<tr class="even">
+<td align="left">Syria</td>
+<td align="right">29695089</td>
+<td align="right">1753370</td>
+<td align="right">3395479</td>
+<td align="right">1055081</td>
+<td align="right">6.1525131</td>
+</tr>
+<tr class="odd">
+<td align="left">Belize</td>
+<td align="right">29000325</td>
+<td align="right">371035</td>
+<td align="right">2714719</td>
+<td align="right">135493</td>
+<td align="right">1.6672245</td>
+</tr>
+<tr class="even">
+<td align="left">Gabon</td>
+<td align="right">26958786</td>
+<td align="right">171020</td>
+<td align="right">4828171</td>
+<td align="right">605000</td>
+<td align="right">0.6313599</td>
+</tr>
+<tr class="odd">
+<td align="left">Guinea</td>
+<td align="right">23132655</td>
+<td align="right">245180</td>
+<td align="right">5254798</td>
+<td align="right">546404</td>
+<td align="right">1.0258125</td>
+</tr>
+<tr class="even">
+<td align="left">Papua New Guinea</td>
+<td align="right">21048066</td>
+<td align="right">296583</td>
+<td align="right">1653399</td>
+<td align="right">322978</td>
+<td align="right">1.2946630</td>
+</tr>
+<tr class="odd">
+<td align="left">Andorra</td>
+<td align="right">21033744</td>
+<td align="right">109383</td>
+<td align="right">2785562</td>
+<td align="right">163955</td>
+<td align="right">0.6227385</td>
+</tr>
+<tr class="even">
+<td align="left">Seychelles</td>
+<td align="right">20724591</td>
+<td align="right">81007</td>
+<td align="right">1460696</td>
+<td align="right">176601</td>
+<td align="right">0.3991367</td>
+</tr>
+<tr class="odd">
+<td align="left">Burundi</td>
+<td align="right">19619390</td>
+<td align="right">19922</td>
+<td align="right">219407</td>
+<td align="right">614096</td>
+<td align="right">0.1354822</td>
+</tr>
+<tr class="even">
+<td align="left">Togo</td>
+<td align="right">19408529</td>
+<td align="right">157745</td>
+<td align="right">2179604</td>
+<td align="right">285916</td>
+<td align="right">0.8948885</td>
+</tr>
+<tr class="odd">
+<td align="left">Bhutan</td>
+<td align="right">19181105</td>
+<td align="right">7062</td>
+<td align="right">275895</td>
+<td align="right">40384</td>
+<td align="right">0.0659980</td>
+</tr>
+<tr class="even">
+<td align="left">Haiti</td>
+<td align="right">18863694</td>
+<td align="right">483433</td>
+<td align="right">3199950</td>
+<td align="right">990509</td>
+<td align="right">2.5127469</td>
+</tr>
+<tr class="odd">
+<td align="left">Bahamas</td>
+<td align="right">18234562</td>
+<td align="right">415097</td>
+<td align="right">2197837</td>
+<td align="right">389739</td>
+<td align="right">2.2350837</td>
+</tr>
+<tr class="even">
+<td align="left">Lesotho</td>
+<td align="right">17097385</td>
+<td align="right">386991</td>
+<td align="right">1124127</td>
+<td align="right">1190226</td>
+<td align="right">2.3846161</td>
+</tr>
+<tr class="odd">
+<td align="left">Mali</td>
+<td align="right">16557360</td>
+<td align="right">452861</td>
+<td align="right">2124634</td>
+<td align="right">744239</td>
+<td align="right">2.9728113</td>
+</tr>
+<tr class="even">
+<td align="left">Tanzania</td>
+<td align="right">15903394</td>
+<td align="right">360810</td>
+<td align="right">76204</td>
+<td align="right">133271</td>
+<td align="right">2.9452222</td>
+</tr>
+<tr class="odd">
+<td align="left">Somalia</td>
+<td align="right">15226501</td>
+<td align="right">762920</td>
+<td align="right">1532136</td>
+<td align="right">1334598</td>
+<td align="right">4.9166749</td>
+</tr>
+<tr class="even">
+<td align="left">Benin</td>
+<td align="right">14220020</td>
+<td align="right">101267</td>
+<td align="right">1586957</td>
+<td align="right">157690</td>
+<td align="right">0.8410276</td>
+</tr>
+<tr class="odd">
+<td align="left">Congo (Brazzaville)</td>
+<td align="right">13726346</td>
+<td align="right">211390</td>
+<td align="right">2204625</td>
+<td align="right">592677</td>
+<td align="right">1.4955934</td>
+</tr>
+<tr class="even">
+<td align="left">Tajikistan</td>
+<td align="right">12972082</td>
+<td align="right">92901</td>
+<td align="right">4044205</td>
+<td align="right">315094</td>
+<td align="right">0.6988673</td>
+</tr>
+<tr class="odd">
+<td align="left">Burkina Faso</td>
+<td align="right">12538022</td>
+<td align="right">210376</td>
+<td align="right">2773542</td>
+<td align="right">145870</td>
+<td align="right">1.5585463</td>
+</tr>
+<tr class="even">
+<td align="left">Saint Lucia</td>
+<td align="right">11917729</td>
+<td align="right">175717</td>
+<td align="right">785688</td>
+<td align="right">49643</td>
+<td align="right">1.4748658</td>
+</tr>
+<tr class="odd">
+<td align="left">Timor-Leste</td>
+<td align="right">11344822</td>
+<td align="right">62214</td>
+<td align="right">634176</td>
+<td align="right">165173</td>
+<td align="right">0.4249300</td>
+</tr>
+<tr class="even">
+<td align="left">South Sudan</td>
+<td align="right">10297532</td>
+<td align="right">95186</td>
+<td align="right">1909029</td>
+<td align="right">383147</td>
+<td align="right">0.9631192</td>
+</tr>
+<tr class="odd">
+<td align="left">Djibouti</td>
+<td align="right">10152845</td>
+<td align="right">122921</td>
+<td align="right">2718132</td>
+<td align="right">138317</td>
+<td align="right">1.2158044</td>
+</tr>
+<tr class="even">
+<td align="left">Equatorial Guinea</td>
+<td align="right">9722346</td>
+<td align="right">118668</td>
+<td align="right">1972002</td>
+<td align="right">251396</td>
+<td align="right">1.2475092</td>
+</tr>
+<tr class="odd">
+<td align="left">Central African Republic</td>
+<td align="right">8803008</td>
+<td align="right">79362</td>
+<td align="right">1437261</td>
+<td align="right">554653</td>
+<td align="right">0.9595743</td>
+</tr>
+<tr class="even">
+<td align="left">San Marino</td>
+<td align="right">8711113</td>
+<td align="right">80903</td>
+<td align="right">1005610</td>
+<td align="right">73514</td>
+<td align="right">1.2079725</td>
+</tr>
+<tr class="odd">
+<td align="left">Nicaragua</td>
+<td align="right">8510130</td>
+<td align="right">171091</td>
+<td align="right">1365187</td>
+<td align="right">781442</td>
+<td align="right">1.8172314</td>
+</tr>
+<tr class="even">
+<td align="left">Liechtenstein</td>
+<td align="right">7644920</td>
+<td align="right">50441</td>
+<td align="right">602010</td>
+<td align="right">39431</td>
+<td align="right">1.1238873</td>
+</tr>
+<tr class="odd">
+<td align="left">Gambia</td>
+<td align="right">7159712</td>
+<td align="right">219142</td>
+<td align="right">1278305</td>
+<td align="right">179862</td>
+<td align="right">3.0633288</td>
+</tr>
+<tr class="even">
+<td align="left">Grenada</td>
+<td align="right">6914000</td>
+<td align="right">97715</td>
+<td align="right">36981</td>
+<td align="right">1293</td>
+<td align="right">1.2402060</td>
+</tr>
+<tr class="odd">
+<td align="left">Yemen</td>
+<td align="right">6724436</td>
+<td align="right">1288720</td>
+<td align="right">706151</td>
+<td align="right">320281</td>
+<td align="right">19.7716053</td>
+</tr>
+<tr class="even">
+<td align="left">Solomon Islands</td>
+<td align="right">6599911</td>
+<td align="right">49894</td>
+<td align="right">3673</td>
+<td align="right">679</td>
+<td align="right">0.4208785</td>
+</tr>
+<tr class="odd">
+<td align="left">Monaco</td>
+<td align="right">5745213</td>
+<td align="right">32246</td>
+<td align="right">469608</td>
+<td align="right">32691</td>
+<td align="right">0.7609800</td>
+</tr>
+<tr class="even">
+<td align="left">Dominica</td>
+<td align="right">5574999</td>
+<td align="right">26937</td>
+<td align="right">37699</td>
+<td align="right">2697</td>
+<td align="right">0.3241861</td>
+</tr>
+<tr class="odd">
+<td align="left">Niger</td>
+<td align="right">5422114</td>
+<td align="right">191830</td>
+<td align="right">1178322</td>
+<td align="right">86581</td>
+<td align="right">3.4611342</td>
+</tr>
+<tr class="even">
+<td align="left">Eritrea</td>
+<td align="right">5351168</td>
+<td align="right">46184</td>
+<td align="right">773638</td>
+<td align="right">96077</td>
+<td align="right">0.7485751</td>
+</tr>
+<tr class="odd">
+<td align="left">Guinea-Bissau</td>
+<td align="right">4937632</td>
+<td align="right">96602</td>
+<td align="right">846322</td>
+<td align="right">258239</td>
+<td align="right">1.9539481</td>
+</tr>
+<tr class="even">
+<td align="left">Sierra Leone</td>
+<td align="right">4859628</td>
+<td align="right">90825</td>
+<td align="right">879639</td>
+<td align="right">341732</td>
+<td align="right">1.8011203</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">4855987</td>
+<td align="right">169765</td>
+<td align="right">1784509</td>
+<td align="right">0</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="even">
+<td align="left">Chad</td>
+<td align="right">4490917</td>
+<td align="right">139788</td>
+<td align="right">1015873</td>
+<td align="right">66478</td>
+<td align="right">3.0530910</td>
+</tr>
+<tr class="odd">
+<td align="left">Comoros</td>
+<td align="right">4439576</td>
+<td align="right">105562</td>
+<td align="right">745914</td>
+<td align="right">38967</td>
+<td align="right">2.6702025</td>
+</tr>
+<tr class="even">
+<td align="left">Liberia</td>
+<td align="right">4276871</td>
+<td align="right">172594</td>
+<td align="right">576408</td>
+<td align="right">153597</td>
+<td align="right">3.9880634</td>
+</tr>
+<tr class="odd">
+<td align="left">Samoa</td>
+<td align="right">4199009</td>
+<td align="right">7750</td>
+<td align="right">511</td>
+<td align="right">92</td>
+<td align="right">0.0770537</td>
+</tr>
+<tr class="even">
+<td align="left">Tonga</td>
+<td align="right">4198183</td>
+<td align="right">3564</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0.0705588</td>
+</tr>
+<tr class="odd">
+<td align="left">Saint Vincent and the Grenadines</td>
+<td align="right">4131347</td>
+<td align="right">47610</td>
+<td align="right">307333</td>
+<td align="right">63549</td>
+<td align="right">0.9380697</td>
+</tr>
+<tr class="even">
+<td align="left">Antigua and Barbuda</td>
+<td align="right">3666066</td>
+<td align="right">67520</td>
+<td align="right">185290</td>
+<td align="right">29989</td>
+<td align="right">2.1966059</td>
+</tr>
+<tr class="odd">
+<td align="left">Sao Tome and Principe</td>
+<td align="right">3224362</td>
+<td align="right">42454</td>
+<td align="right">516973</td>
+<td align="right">56580</td>
+<td align="right">1.3555589</td>
+</tr>
+<tr class="even">
+<td align="left">Vanuatu</td>
+<td align="right">3206979</td>
+<td align="right">4219</td>
+<td align="right">424</td>
+<td align="right">96</td>
+<td align="right">8.3131623</td>
+</tr>
+<tr class="odd">
+<td align="left">Micronesia</td>
+<td align="right">3007409</td>
+<td align="right">7760</td>
+<td align="right">188</td>
+<td align="right">8</td>
+<td align="right">0.0679293</td>
+</tr>
+<tr class="even">
+<td align="left">Saint Kitts and Nevis</td>
+<td align="right">2530738</td>
+<td align="right">17974</td>
+<td align="right">26812</td>
+<td align="right">9551</td>
+<td align="right">0.5179105</td>
+</tr>
+<tr class="odd">
+<td align="left">Marshall Islands</td>
+<td align="right">2389654</td>
+<td align="right">2647</td>
+<td align="right">865</td>
+<td align="right">24</td>
+<td align="right">0.0286506</td>
+</tr>
+<tr class="even">
+<td align="left">Palau</td>
+<td align="right">1793988</td>
+<td align="right">2274</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0950479</td>
+</tr>
+<tr class="odd">
+<td align="left">Kiribati</td>
+<td align="right">1231804</td>
+<td align="right">4666</td>
+<td align="right">0</td>
+<td align="right">155</td>
+<td align="right">0.2352007</td>
+</tr>
+<tr class="even">
+<td align="left">Nauru</td>
+<td align="right">963125</td>
+<td align="right">203</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0038934</td>
+</tr>
+<tr class="odd">
+<td align="left">Diamond Princess</td>
+<td align="right">666432</td>
+<td align="right">12118</td>
+<td align="right">302621</td>
+<td align="right">11979</td>
+<td align="right">1.8258427</td>
+</tr>
+<tr class="even">
+<td align="left">Summer Olympics 2020</td>
+<td align="right">415648</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2931</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="left">Tuvalu</td>
+<td align="right">196537</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="left">Winter Olympics 2022</td>
+<td align="right">188782</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="left">Holy See</td>
+<td align="right">22807</td>
+<td align="right">0</td>
+<td align="right">6322</td>
+<td align="right">2627</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="left">MS Zaandam</td>
+<td align="right">8369</td>
+<td align="right">1858</td>
+<td align="right">1512</td>
+<td align="right">1597</td>
+<td align="right">22.2222222</td>
+</tr>
+<tr class="odd">
+<td align="left">Antarctica</td>
+<td align="right">4235</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="left">Cruise Ship</td>
+<td align="right">1424</td>
+<td align="right">16</td>
+<td align="right">1134</td>
+<td align="right">274</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="odd">
+<td align="left">Korea, North</td>
+<td align="right">252</td>
+<td align="right">1512</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">230.1272984</td>
+</tr>
+</tbody>
+</table>
+<p>Table interactive (boutons et défilement horizontal) : 1/ Dans le
+monde entier :</p>
+<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(DT)</code></pre>
+<pre><code class="hljs">## Warning: le package 'DT' a été compilé avec la version R 4.4.2</code></pre>
+<pre><code class="hljs">## 
+## Attachement du package : 'DT'</code></pre>
+<pre><code class="hljs">## Les objets suivants sont masqués depuis 'package:shiny':
+## 
+##     dataTableOutput, renderDataTable</code></pre>
+<pre class="r"><code class="hljs">datatable(
+  covid_summary,
+  options = list(
+    pageLength = <span class="hljs-number">10</span>,
+    autoWidth = <span class="hljs-literal">TRUE</span>,
+    dom = <span class="hljs-string">'Bfrtip'</span>,
+    buttons = c(<span class="hljs-string">'copy'</span>, <span class="hljs-string">'csv'</span>, <span class="hljs-string">'excel'</span>, <span class="hljs-string">'pdf'</span>, <span class="hljs-string">'print'</span>),
+    scrollX = <span class="hljs-literal">TRUE</span>
+  ),
+  extensions = c(<span class="hljs-string">'Buttons'</span>),
+  caption = <span class="hljs-string">"Table interactive des données COVID-19 par pays"</span>
+) %&gt;%
+  formatStyle(
+    <span class="hljs-string">'cas_confirmes'</span>,  <span class="hljs-comment"># Colonne pour les cas confirmés</span>
+    backgroundColor = styleInterval(
+      c(<span class="hljs-number">100000</span>, <span class="hljs-number">500000</span>, <span class="hljs-number">1000000</span>),  <span class="hljs-comment"># Intervalles de valeurs</span>
+      c(<span class="hljs-string">"lightgreen"</span>, <span class="hljs-string">"green"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"red"</span>)  <span class="hljs-comment"># Couleurs correspondantes</span>
+    ),
+    color = <span class="hljs-string">"black"</span>,  <span class="hljs-comment"># Texte en noir</span>
+    fontWeight = <span class="hljs-string">"bold"</span>
+  ) %&gt;%
+  formatStyle(
+    <span class="hljs-string">'cas_deces'</span>,  <span class="hljs-comment"># Colonne pour les décès</span>
+    backgroundColor = styleInterval(
+      c(<span class="hljs-number">5000</span>, <span class="hljs-number">20000</span>, <span class="hljs-number">50000</span>),  <span class="hljs-comment"># Intervalles de valeurs</span>
+      c(<span class="hljs-string">"lightblue"</span>, <span class="hljs-string">"blue"</span>, <span class="hljs-string">"purple"</span>, <span class="hljs-string">"darkred"</span>)  <span class="hljs-comment"># Couleurs correspondantes</span>
+    ),
+    color = <span class="hljs-string">"white"</span>,  <span class="hljs-comment"># Texte en blanc pour contraster avec les couleurs sombres</span>
+    fontWeight = <span class="hljs-string">"bold"</span>
+  ) %&gt;%
+  formatStyle(
+    <span class="hljs-string">'cas_retablis'</span>,  <span class="hljs-comment"># Colonne pour les récupérations</span>
+    backgroundColor = styleInterval(
+      c(<span class="hljs-number">50000</span>, <span class="hljs-number">200000</span>, <span class="hljs-number">500000</span>),  <span class="hljs-comment"># Intervalles de valeurs</span>
+      c(<span class="hljs-string">"red"</span>, <span class="hljs-string">"yellow"</span>, <span class="hljs-string">"lightyellow"</span>, <span class="hljs-string">"green"</span>)  <span class="hljs-comment"># Couleurs correspondantes</span>
+    ),
+    color = <span class="hljs-string">"black"</span>,
+    fontWeight = <span class="hljs-string">"bold"</span>
+  )</code></pre>
+<div class="datatables html-widget html-fill-item html-widget-static-bound" id="htmlwidget-53e63d05216abbe4a91e" style="width:100%;height:auto;"><div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer"><div class="dt-buttons">          <button class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>Copy</span></button> <button class="dt-button buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>CSV</span></button> <button class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>Excel</span></button> <button class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>PDF</span></button> <button class="dt-button buttons-print" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>Print</span></button> </div><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_0"></label></div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 19px; width: 913.997px;"><table class="display dataTable no-footer" style="width: 913.997px;"><caption>Table interactive des données COVID-19 par pays</caption><thead>
+    <tr><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 23.9974px;" aria-label=" "> </th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 180.013px;" aria-label="Country_Region: activate to sort column ascending">Country_Region</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 99.0104px;" aria-label="cas_confirmes: activate to sort column ascending">cas_confirmes</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70.9896px;" aria-label="cas_deces: activate to sort column ascending">cas_deces</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 80.9896px;" aria-label="cas_retablis: activate to sort column ascending">cas_retablis</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 67.9948px;" aria-label="cas_actifs: activate to sort column ascending">cas_actifs</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 155.065px;" aria-label="avg_case_fatality_ratio: activate to sort column ascending">avg_case_fatality_ratio</th></tr>
+  </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table class="display dataTable no-footer" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 914px;"><thead>
+    <tr style="height: 0px;"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 23.9974px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label=" "><div class="dataTables_sizing" style="height: 0px; overflow: hidden;"> </div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 180.013px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="Country_Region: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Country_Region</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 99.0104px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_confirmes: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_confirmes</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70.9896px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_deces: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_deces</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 80.9896px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_retablis: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_retablis</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 67.9948px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_actifs: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_actifs</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 155.065px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="avg_case_fatality_ratio: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">avg_case_fatality_ratio</div></th></tr>
+  </thead>
+  <tbody><tr class="odd"><td>1</td><td>US</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">45915196090</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">609479472</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">343933934</td><td class="  dt-right">2612616475</td><td class="  dt-right">2.806487758361597</td></tr><tr class="even"><td>2</td><td>India</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">24859862211</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">310005993</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">4420604416</td><td class="  dt-right">311874594</td><td class="  dt-right">1.160814146234894</td></tr><tr class="odd"><td>3</td><td>Brazil</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">18091815884</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">416867520</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">3125707266</td><td class="  dt-right">350619205</td><td class="  dt-right">2.142508554851842</td></tr><tr class="even"><td>4</td><td>France</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">13749771353</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">97205348</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">88092599</td><td class="  dt-right">1020829537</td><td class="  dt-right">0.6613201293193033</td></tr><tr class="odd"><td>5</td><td>Germany</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">11576745240</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">82477393</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">651873482</td><td class="  dt-right">44118558</td><td class="  dt-right">1.452318806272404</td></tr><tr class="even"><td>6</td><td>United Kingdom</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">10346187853</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">138219985</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">3258202</td><td class="  dt-right">996366265</td><td class="  dt-right">0.853619718412934</td></tr><tr class="odd"><td>7</td><td>Russia</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">8970383007</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">187082940</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">1034253749</td><td class="  dt-right">123383263</td><td class="  dt-right">2.156816311663319</td></tr><tr class="even"><td>8</td><td>Italy</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">8572791407</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">109808929</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">713676833</td><td class="  dt-right">95311609</td><td class="  dt-right">1.838530999491057</td></tr><tr class="odd"><td>9</td><td>Turkey</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">7540075713</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">53452389</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">871095281</td><td class="  dt-right">44366822</td><td class="  dt-right">0.7872750612450082</td></tr><tr class="even"><td>10</td><td>Korea, South</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">7115145810</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">9504579</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">26695249</td><td class="  dt-right">2582723</td><td class="  dt-right">0.7149407717575823</td></tr></tbody>
+</table></div><div class="dataTables_scrollFoot" style="overflow: hidden; border: 0px; width: 100%;"><div class="dataTables_scrollFootInner"><table class="display dataTable no-footer" style="margin-left: 0px;"><tfoot></tfoot></table></div></div></div><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 203 entries</div><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><a class="paginate_button previous disabled" aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" id="DataTables_Table_0_previous">Previous</a><span><a class="paginate_button current" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0">1</a><a class="paginate_button " aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0">2</a><a class="paginate_button " aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0">3</a><a class="paginate_button " aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0">4</a><a class="paginate_button " aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0">5</a><span class="ellipsis">…</span><a class="paginate_button " aria-controls="DataTables_Table_0" role="link" data-dt-idx="20" tabindex="0">21</a></span><a class="paginate_button next" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" id="DataTables_Table_0_next">Next</a></div></div></div>
+<script type="application/json" data-for="htmlwidget-53e63d05216abbe4a91e">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"caption":"<caption>Table interactive des données COVID-19 par pays<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203"],["US","India","Brazil","France","Germany","United Kingdom","Russia","Italy","Turkey","Korea, South","Spain","Japan","Argentina","Iran","Vietnam","Colombia","Netherlands","Mexico","Indonesia","Poland","Australia","Ukraine","South Africa","Peru","Czechia","Portugal","Malaysia","Chile","Belgium","Canada","Philippines","Israel","Austria","Thailand","Greece","Switzerland","Taiwan*","Romania","Iraq","Sweden","Denmark","Slovakia","Bangladesh","Serbia","Hungary","China","Pakistan","Jordan","Georgia","Kazakhstan","Ireland","Morocco","Singapore","Lebanon","Bulgaria","Norway","United Arab Emirates","Nepal","Croatia","Tunisia","Cuba","Lithuania","Bolivia","Belarus","Ecuador","New Zealand","Saudi Arabia","Costa Rica","Guatemala","Slovenia","Panama","Finland","Uruguay","Azerbaijan","Mongolia","Paraguay","Kuwait","Latvia","West Bank and Gaza","Dominican Republic","Sri Lanka","Burma","Bahrain","Moldova","Venezuela","Egypt","Ethiopia","Libya","Honduras","Estonia","Armenia","Qatar","Oman","Cyprus","Bosnia and Herzegovina","Kenya","North Macedonia","Zambia","Nigeria","Albania","Algeria","Botswana","Uzbekistan","Montenegro","Kosovo","Kyrgyzstan","Luxembourg","Zimbabwe","Mozambique","Afghanistan","Ghana","El Salvador","Namibia","Mauritius","Uganda","Maldives","Laos","Iceland","Cameroon","Trinidad and Tobago","Jamaica","Brunei","Cambodia","Rwanda","Angola","Senegal","Cote d'Ivoire","Congo (Kinshasa)","Malta","Malawi","Madagascar","Suriname","Sudan","Eswatini","Barbados","Cabo Verde","Mauritania","Guyana","Fiji","Syria","Belize","Gabon","Guinea","Papua New Guinea","Andorra","Seychelles","Burundi","Togo","Bhutan","Haiti","Bahamas","Lesotho","Mali","Tanzania","Somalia","Benin","Congo (Brazzaville)","Tajikistan","Burkina Faso","Saint Lucia","Timor-Leste","South Sudan","Djibouti","Equatorial Guinea","Central African Republic","San Marino","Nicaragua","Liechtenstein","Gambia","Grenada","Yemen","Solomon Islands","Monaco","Dominica","Niger","Eritrea","Guinea-Bissau","Sierra Leone",null,"Chad","Comoros","Liberia","Samoa","Tonga","Saint Vincent and the Grenadines","Antigua and Barbuda","Sao Tome and Principe","Vanuatu","Micronesia","Saint Kitts and Nevis","Marshall Islands","Palau","Kiribati","Nauru","Diamond Princess","Summer Olympics 2020","Tuvalu","Winter Olympics 2022","Holy See","MS Zaandam","Antarctica","Cruise Ship","Korea, North"],[45915196090,24859862211,18091815884,13749771353,11576745240,10346187853,8970383007,8572791407,7540075713,7115145810,6078145854,6004848072,4828142355,3905642623,3696442421,3600421515,3524608838,3355555433,3139408174,3110674329,2976969743,2703512202,2227911582,2137375957,2086031324,2067049956,2002648622,2002594516,1940440341,1937248680,1930344830,1912908214,1871782353,1766592982,1651233652,1634777822,1561275052,1492241477,1363751225,1271059366,1266132630,1160733354,1112933321,1041800951,972387293,958448685,921974858,848809010,762735994,734060305,687386429,678283861,603512053,597622371,580190397,559838540,559116147,554495085,549740247,549719045,526181720,519496685,518280203,506716081,500247870,493361846,492952648,487656355,486724331,485425098,478099233,450169920,431289674,418145771,407454593,371671881,354609276,352107461,351785397,341856841,333354025,314335686,306263032,290835738,288945511,286543264,273869308,262261347,257068607,250091660,241012048,240774875,233680010,216740390,210449393,188167415,172154043,168666336,161444066,157761564,155377580,145326003,135371929,130254644,129843220,123712659,120621945,119674131,117454922,110230524,100693018,96161959,89391054,88666008,88046900,85538924,77835463,71217895,71071285,70710231,70335158,67100218,66994639,66130853,51037681,51031625,49787227,48612449,47915215,47056192,37876468,37658531,36809899,36552996,33380737,32127267,31866557,31861066,30978925,29695089,29000325,26958786,23132655,21048066,21033744,20724591,19619390,19408529,19181105,18863694,18234562,17097385,16557360,15903394,15226501,14220020,13726346,12972082,12538022,11917729,11344822,10297532,10152845,9722346,8803008,8711113,8510130,7644920,7159712,6914000,6724436,6599911,5745213,5574999,5422114,5351168,4937632,4859628,4855987,4490917,4439576,4276871,4199009,4198183,4131347,3666066,3224362,3206979,3007409,2530738,2389654,1793988,1231804,963125,666432,415648,196537,188782,22807,8369,4235,1424,252],[609479472,310005993,416867520,97205348,82477393,138219985,187082940,109808929,53452389,9504579,72519554,18896929,77285048,85040508,17833268,85842464,15607994,205701649,84876312,64979295,4659852,59837031,60679478,146291502,24189400,14606244,16463035,32583157,21974147,25879714,31475048,6450312,11714381,13049958,15196502,9019257,2935118,35378078,16183901,12961196,3372810,10988984,17010438,8404958,25864729,12008865,19021795,8063778,8131201,10257334,4711637,9696788,572113,6174835,19435134,1589085,1482110,6814656,8574673,15802100,4127617,4792233,13969013,3703891,22458075,508494,6526394,4751745,10453764,3913333,5507526,2318405,3976057,5310886,971809,10495902,1639686,2927366,3205458,3079280,7753487,9983583,909696,6409106,3156037,14731674,4261560,3537503,6564850,1338819,4808199,439386,2696868,530992,8808901,3324897,5242214,2244731,2049913,2119395,4157183,1419257,936465,1536506,1973236,1909194,687433,2948008,1203860,4603179,849354,2456465,2103125,392123,1849640,167189,276622,71736,1156546,1757695,1545638,82654,1455955,758393,1038663,1188203,438382,847846,408361,1483141,776864,679256,2724807,804907,195190,240355,575585,630615,390837,1753370,371035,171020,245180,296583,109383,81007,19922,157745,7062,483433,415097,386991,452861,360810,762920,101267,211390,92901,210376,175717,62214,95186,122921,118668,79362,80903,171091,50441,219142,97715,1288720,49894,32246,26937,191830,46184,96602,90825,169765,139788,105562,172594,7750,3564,47610,67520,42454,4219,7760,17974,2647,2274,4666,203,12118,0,0,0,0,1858,0,16,1512],[343933934,4420604416,3125707266,88092599,651873482,3258202,1034253749,713676833,871095281,26695249,64041544,122938726,649568342,485950082,1202433,672706081,4772005,455522953,340554557,453547157,7738253,360331998,396757596,414848124,294557059,165428724,161424835,290324260,3797592,247310150,213269090,182020709,119939483,5720086,20836619,76831972,773679,202199149,226669927,160005,54131365,52978227,171511340,733299,107732806,40088804,188634294,120006065,64802983,83764813,9590805,116474718,21509807,86141790,65079604,5568480,111122933,88201871,64235886,57338961,23530208,46494088,63922001,81964801,81264473,868509,129415206,50518647,52377538,44971676,83318547,10686570,36483341,63789249,8079804,51766671,65470603,21232748,53797059,56934246,27720107,30447469,44468775,49769058,45068323,46627143,43944722,33207599,19250415,19261331,46095094,57184802,48830851,5015465,33094892,26737385,27276154,21022460,36344685,21564947,22937399,9257679,24865026,18272705,18872215,25213115,14116275,8335929,12445532,16473220,23439437,15825923,11207788,279811,8302672,8323992,166501,1806758,9783508,3061856,5073109,75705,3645503,5136280,5486731,8985479,10739979,6275548,5677891,6020592,7919407,2853993,6424874,3861183,679591,5178661,4633009,2734519,174555,3395479,2714719,4828171,5254798,1653399,2785562,1460696,219407,2179604,275895,3199950,2197837,1124127,2124634,76204,1532136,1586957,2204625,4044205,2773542,785688,634176,1909029,2718132,1972002,1437261,1005610,1365187,602010,1278305,36981,706151,3673,469608,37699,1178322,773638,846322,879639,1784509,1015873,745914,576408,511,0,307333,185290,516973,424,188,26812,865,0,0,0,302621,0,0,0,6322,1512,0,1134,0],[2612616475,311874594,350619205,1020829537,44118558,996366265,123383263,95311609,44366822,2582723,747313462,10620390,67134902,68433307,2242911,39612851,314243012,448751393,47450865,56633676,2174260,55500315,31513474,406278580,22349729,17412682,23876619,15465641,214009928,14738878,20838211,9531097,5168300,22442409,45473562,66522196,428711,12441080,22250938,196780099,2962953,89381552,29454126,130995636,28531796,387626,17055189,7896455,2787979,10554978,47038884,4576753,1368464,14404742,8843938,18444528,6039842,9303839,1646522,10459433,2283313,3794164,15840791,3755102,9319153,42656,7187761,13689856,4841756,2695592,6868057,7362202,3656211,2988877,2042803,8653922,4533043,1689966,3611245,13551792,3487077,4515407,2634251,3428317,3652408,12846104,9673326,5264245,32960883,2380201,3835756,3656351,5134534,7646127,5685459,8608475,2549167,1451120,4307643,4494478,9341446,1208238,1161652,1309675,1707569,2153878,840251,1504577,2408924,5191488,1158620,1642341,1741328,79114,3538233,1420862,92772,107312,5516596,832013,3372383,4911,832882,1194223,977297,1022111,660774,1754349,404621,1336094,499621,395412,2085883,429146,49766,358688,303597,331414,510806,1055081,135493,605000,546404,322978,163955,176601,614096,285916,40384,990509,389739,1190226,744239,133271,1334598,157690,592677,315094,145870,49643,165173,383147,138317,251396,554653,73514,781442,39431,179862,1293,320281,679,32691,2697,86581,96077,258239,341732,0,66478,38967,153597,92,3,63549,29989,56580,96,8,9551,24,0,155,0,11979,2931,0,0,2627,1597,0,274,0],[2.806487758361597,1.160814146234894,2.142508554851842,0.6613201293193033,1.452318806272404,0.853619718412934,2.156816311663319,1.838530999491057,0.7872750612450082,0.7149407717575823,1.391471548099075,0.8794376747012694,1.786814494635657,2.392776672241312,1.050769878284073,3.975502445042588,0.6814951206302013,7.636152240710462,2.751522514281271,2.195635504767005,0.846803093151507,2.25962302778088,2.833281566939056,6.847227212311355,1.362548576329278,1.145038880026044,0.7539329319291332,1.523566004094161,7.423200955790053,0.8890793528512415,1.68121375117514,0.4758357299677598,1.004231069530674,0.7081561739824226,1.757760180536209,0.9263088745220796,2.055948970190189,2.503348260247524,1.249042695745541,1.080091881926691,0.2428229020549195,1.104881078011558,1.542328245275432,0.8527525612819216,2.911627556449857,0.6258508717280538,1.87235187476887,1.041207499830554,1.170036793922951,1.446317366557967,1.053269713968299,1.487330626035468,0.09616317104183821,1.094126929375074,3.584877690715405,0.4319347128164027,0.2676133333113495,1.204863046919971,1.757697927475441,3.040054246252189,0.7670552845187479,1.163705473559825,3.121987026169105,0.7308097497174455,4.758834233375985,0.1744813153101956,1.398611930869303,1.078047320294272,2.471970935310806,1.159759642467136,1.26819493121185,0.7290334571817335,1.056718168738588,1.300552631774553,0.2850834104614875,2.76849721499391,0.4859867555994261,1.22285598149846,0.9622838932367874,0.9520792631515822,1.922798775446374,2.99152413894774,0.340365546058407,2.224058379934741,1.089000285133313,5.285894984199344,1.548789032186139,1.405512568724689,2.544499780398947,0.6750503628075751,1.986228764936206,0.1942532726845668,1.170191336117542,0.3514874548839341,4.210076942871488,1.77806129807718,3.093264747260309,1.371781821780498,1.242581211752586,1.454896102207963,2.635817906788254,1.063121734684451,0.6995479609365838,1.263021675493164,1.675528197027928,1.525917447873079,0.7596968040021793,2.865529800877055,1.051898047344905,4.260235137747691,0.8436822857179632,2.696949048961418,2.153673351365509,0.7791561623614419,1.891792307321116,0.2247718892776348,0.2314712067118869,0.2311848168961326,1.597765319710021,2.409904355330881,2.154648417037977,0.6143066122950143,1.722483867194673,1.190560695219883,2.130847632535962,2.380470647503328,0.8464583976212587,1.919833861335087,1.014760681004744,3.17694077251421,2.032272115358822,1.906433583255978,7.351669812487649,2.53390729926979,0.798780378050868,0.7878108162007346,1.951248475082238,2.10803076672761,1.593784770554525,6.152513111809419,1.667224531853871,0.6313599206184034,1.025812491770769,1.294663011644255,0.6227384514408961,0.3991367443879988,0.1354821980963666,0.8948885376539816,0.06599796247581602,2.51274690767611,2.235083738998231,2.384616104842735,2.972811336881402,2.945222201465461,4.916674910229347,0.8410276014193724,1.495593358447798,0.6988672515888775,1.5585462998257,1.474865755997792,0.4249299693956976,0.9631192289055414,1.215804403498369,1.247509192114571,0.9595742642094778,1.207972541753045,1.817231387253502,1.123887329350829,3.06332875331567,1.240206003616954,19.77160534769378,0.4208785063120327,0.7609799958769404,0.3241861206946796,3.461134199823276,0.7485751245495764,1.953948130513069,1.801120255659326,null,3.053090961010521,2.670202549943711,3.988063428154475,0.07705367833240191,0.07055877109799666,0.9380696575765184,2.196605928081125,1.355558915877958,8.313162349127303,0.06792932079280434,0.5179105063019742,0.02865063065099751,0.09504793828993544,0.235200698730425,0.003893414185201158,1.825842696629213,0,0,0,0,22.22222222222222,0,null,230.1272984441301]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Country_Region<\/th>\n      <th>cas_confirmes<\/th>\n      <th>cas_deces<\/th>\n      <th>cas_retablis<\/th>\n      <th>cas_actifs<\/th>\n      <th>avg_case_fatality_ratio<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"autoWidth":true,"dom":"Bfrtip","buttons":["copy","csv","excel","pdf","print"],"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Country_Region","targets":1},{"name":"cas_confirmes","targets":2},{"name":"cas_deces","targets":3},{"name":"cas_retablis","targets":4},{"name":"cas_actifs","targets":5},{"name":"avg_case_fatality_ratio","targets":6}],"order":[],"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-weight':'bold','color':'black','background-color':isNaN(parseFloat(value)) ? '' : value <= 100000 ? \"lightgreen\" : value <= 500000 ? \"green\" : value <= 1000000 ? \"orange\" : \"red\"});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-weight':'bold','color':'white','background-color':isNaN(parseFloat(value)) ? '' : value <= 5000 ? \"lightblue\" : value <= 20000 ? \"blue\" : value <= 50000 ? \"purple\" : \"darkred\"});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-weight':'bold','color':'black','background-color':isNaN(parseFloat(value)) ? '' : value <= 50000 ? \"red\" : value <= 200000 ? \"yellow\" : value <= 500000 ? \"lightyellow\" : \"green\"});\n}"},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<p>2/ Union européenne (UE) :</p>
+<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(dplyr)
+<span class="hljs-keyword">library</span>(DT)
+
+<span class="hljs-comment"># Liste des pays de l'Union européenne</span>
+eu_countries &lt;- c(
+  <span class="hljs-string">"Austria"</span>, <span class="hljs-string">"Belgium"</span>, <span class="hljs-string">"Bulgaria"</span>, <span class="hljs-string">"Croatia"</span>, <span class="hljs-string">"Cyprus"</span>, <span class="hljs-string">"Czech Republic"</span>, 
+  <span class="hljs-string">"Denmark"</span>, <span class="hljs-string">"Estonia"</span>, <span class="hljs-string">"Finland"</span>, <span class="hljs-string">"France"</span>, <span class="hljs-string">"Germany"</span>, <span class="hljs-string">"Greece"</span>, <span class="hljs-string">"Hungary"</span>, 
+  <span class="hljs-string">"Ireland"</span>, <span class="hljs-string">"Italy"</span>, <span class="hljs-string">"Latvia"</span>, <span class="hljs-string">"Lithuania"</span>, <span class="hljs-string">"Luxembourg"</span>, <span class="hljs-string">"Malta"</span>, 
+  <span class="hljs-string">"Netherlands"</span>, <span class="hljs-string">"Poland"</span>, <span class="hljs-string">"Portugal"</span>, <span class="hljs-string">"Romania"</span>, <span class="hljs-string">"Slovakia"</span>, 
+  <span class="hljs-string">"Slovenia"</span>, <span class="hljs-string">"Spain"</span>, <span class="hljs-string">"Sweden"</span>
+)
+
+<span class="hljs-comment"># Filtrer les données pour l'Union européenne</span>
+eu_summary &lt;- covid_summary %&gt;%
+  filter(Country_Region %<span class="hljs-keyword">in</span>% eu_countries)
+
+<span class="hljs-comment"># Créer une table interactive pour les pays de l'Union européenne</span>
+datatable(
+  eu_summary,
+  options = list(
+    pageLength = <span class="hljs-number">10</span>,
+    autoWidth = <span class="hljs-literal">TRUE</span>,
+    dom = <span class="hljs-string">'Bfrtip'</span>,
+    buttons = c(<span class="hljs-string">'copy'</span>, <span class="hljs-string">'csv'</span>, <span class="hljs-string">'excel'</span>, <span class="hljs-string">'pdf'</span>, <span class="hljs-string">'print'</span>),
+    scrollX = <span class="hljs-literal">TRUE</span>
+  ),
+  extensions = c(<span class="hljs-string">'Buttons'</span>),
+  caption = <span class="hljs-string">"Table interactive des données COVID-19 pour les pays de l'Union européenne"</span>
+) %&gt;%
+  formatStyle(
+    <span class="hljs-string">'cas_confirmes'</span>,  <span class="hljs-comment"># Cas confirmés</span>
+    backgroundColor = styleInterval(
+      c(<span class="hljs-number">100000</span>, <span class="hljs-number">500000</span>, <span class="hljs-number">1000000</span>),
+      c(<span class="hljs-string">"lightgreen"</span>, <span class="hljs-string">"green"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"red"</span>)
+    ),
+    color = <span class="hljs-string">"black"</span>,
+    fontWeight = <span class="hljs-string">"bold"</span>
+  ) %&gt;%
+  formatStyle(
+    <span class="hljs-string">'cas_deces'</span>,  <span class="hljs-comment"># Décès</span>
+    backgroundColor = styleInterval(
+      c(<span class="hljs-number">5000</span>, <span class="hljs-number">20000</span>, <span class="hljs-number">50000</span>),
+      c(<span class="hljs-string">"lightblue"</span>, <span class="hljs-string">"blue"</span>, <span class="hljs-string">"purple"</span>, <span class="hljs-string">"darkred"</span>)
+    ),
+    color = <span class="hljs-string">"white"</span>,
+    fontWeight = <span class="hljs-string">"bold"</span>
+  ) %&gt;%
+  formatStyle(
+    <span class="hljs-string">'cas_retablis'</span>,  <span class="hljs-comment"># Récupérations</span>
+    backgroundColor = styleInterval(
+      c(<span class="hljs-number">50000</span>, <span class="hljs-number">200000</span>, <span class="hljs-number">500000</span>),
+      c(<span class="hljs-string">"red"</span>, <span class="hljs-string">"yellow"</span>, <span class="hljs-string">"lightyellow"</span>, <span class="hljs-string">"green"</span>)
+    ),
+    color = <span class="hljs-string">"black"</span>,
+    fontWeight = <span class="hljs-string">"bold"</span>
+  )</code></pre>
+<div class="datatables html-widget html-fill-item html-widget-static-bound" id="htmlwidget-8a033b6f9839785bcc40" style="width:100%;height:auto;"><div id="DataTables_Table_1_wrapper" class="dataTables_wrapper no-footer"><div class="dt-buttons">          <button class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>Copy</span></button> <button class="dt-button buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>CSV</span></button> <button class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>Excel</span></button> <button class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>PDF</span></button> <button class="dt-button buttons-print" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>Print</span></button> </div><div id="DataTables_Table_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_1"></label></div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 19px; width: 835px;"><table class="display dataTable no-footer" style="width: 835px;"><caption>Table interactive des données COVID-19 pour les pays de l'Union européenne</caption><thead>
+    <tr><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 15.9896px;" aria-label=" "> </th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 109.01px;" aria-label="Country_Region: activate to sort column ascending">Country_Region</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 99.0104px;" aria-label="cas_confirmes: activate to sort column ascending">cas_confirmes</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 71.0026px;" aria-label="cas_deces: activate to sort column ascending">cas_deces</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 81.0026px;" aria-label="cas_retablis: activate to sort column ascending">cas_retablis</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 67.9948px;" aria-label="cas_actifs: activate to sort column ascending">cas_actifs</th><th class="dt-right sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 155.052px;" aria-label="avg_case_fatality_ratio: activate to sort column ascending">avg_case_fatality_ratio</th></tr>
+  </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table class="display dataTable no-footer" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info" style="width: 835px;"><thead>
+    <tr style="height: 0px;"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 15.9896px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label=" "><div class="dataTables_sizing" style="height: 0px; overflow: hidden;"> </div></th><th class="sorting" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 109.01px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="Country_Region: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Country_Region</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 99.0104px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_confirmes: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_confirmes</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 71.0026px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_deces: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_deces</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 81.0026px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_retablis: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_retablis</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 67.9948px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="cas_actifs: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">cas_actifs</div></th><th class="dt-right sorting" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 155.052px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="avg_case_fatality_ratio: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">avg_case_fatality_ratio</div></th></tr>
+  </thead>
+  <tbody><tr class="odd"><td>1</td><td>France</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">13749771353</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">97205348</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">88092599</td><td class="  dt-right">1020829537</td><td class="  dt-right">0.6613201293193033</td></tr><tr class="even"><td>2</td><td>Germany</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">11576745240</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">82477393</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">651873482</td><td class="  dt-right">44118558</td><td class="  dt-right">1.452318806272404</td></tr><tr class="odd"><td>3</td><td>Italy</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">8572791407</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">109808929</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">713676833</td><td class="  dt-right">95311609</td><td class="  dt-right">1.838530999491057</td></tr><tr class="even"><td>4</td><td>Spain</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">6078145854</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">72519554</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">64041544</td><td class="  dt-right">747313462</td><td class="  dt-right">1.391471548099075</td></tr><tr class="odd"><td>5</td><td>Netherlands</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">3524608838</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">15607994</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">4772005</td><td class="  dt-right">314243012</td><td class="  dt-right">0.6814951206302013</td></tr><tr class="even"><td>6</td><td>Poland</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">3110674329</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">64979295</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">453547157</td><td class="  dt-right">56633676</td><td class="  dt-right">2.195635504767005</td></tr><tr class="odd"><td>7</td><td>Portugal</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">2067049956</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">14606244</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">165428724</td><td class="  dt-right">17412682</td><td class="  dt-right">1.145038880026044</td></tr><tr class="even"><td>8</td><td>Belgium</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">1940440341</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">21974147</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">3797592</td><td class="  dt-right">214009928</td><td class="  dt-right">7.423200955790053</td></tr><tr class="odd"><td>9</td><td>Austria</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">1871782353</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">11714381</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">119939483</td><td class="  dt-right">5168300</td><td class="  dt-right">1.004231069530674</td></tr><tr class="even"><td>10</td><td>Greece</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: red;">1651233652</td><td class="  dt-right" style="font-weight: bold; color: white; background-color: darkred;">15196502</td><td class="  dt-right" style="font-weight: bold; color: black; background-color: green;">20836619</td><td class="  dt-right">45473562</td><td class="  dt-right">1.757760180536209</td></tr></tbody>
+</table></div><div class="dataTables_scrollFoot" style="overflow: hidden; border: 0px; width: 100%;"><div class="dataTables_scrollFootInner"><table class="display dataTable no-footer" style="margin-left: 0px;"><tfoot></tfoot></table></div></div></div><div class="dataTables_info" id="DataTables_Table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 26 entries</div><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_1_paginate"><a class="paginate_button previous disabled" aria-controls="DataTables_Table_1" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" id="DataTables_Table_1_previous">Previous</a><span><a class="paginate_button current" aria-controls="DataTables_Table_1" role="link" aria-current="page" data-dt-idx="0" tabindex="0">1</a><a class="paginate_button " aria-controls="DataTables_Table_1" role="link" data-dt-idx="1" tabindex="0">2</a><a class="paginate_button " aria-controls="DataTables_Table_1" role="link" data-dt-idx="2" tabindex="0">3</a></span><a class="paginate_button next" aria-controls="DataTables_Table_1" role="link" data-dt-idx="next" tabindex="0" id="DataTables_Table_1_next">Next</a></div></div></div>
+<script type="application/json" data-for="htmlwidget-8a033b6f9839785bcc40">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"caption":"<caption>Table interactive des données COVID-19 pour les pays de l'Union européenne<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"],["France","Germany","Italy","Spain","Netherlands","Poland","Portugal","Belgium","Austria","Greece","Romania","Sweden","Denmark","Slovakia","Hungary","Ireland","Bulgaria","Croatia","Lithuania","Slovenia","Finland","Latvia","Estonia","Cyprus","Luxembourg","Malta"],[13749771353,11576745240,8572791407,6078145854,3524608838,3110674329,2067049956,1940440341,1871782353,1651233652,1492241477,1271059366,1266132630,1160733354,972387293,687386429,580190397,549740247,519496685,485425098,450169920,352107461,250091660,216740390,120621945,47915215],[97205348,82477393,109808929,72519554,15607994,64979295,14606244,21974147,11714381,15196502,35378078,12961196,3372810,10988984,25864729,4711637,19435134,8574673,4792233,3913333,2318405,2927366,1338819,530992,687433,408361],[88092599,651873482,713676833,64041544,4772005,453547157,165428724,3797592,119939483,20836619,202199149,160005,54131365,52978227,107732806,9590805,65079604,64235886,46494088,44971676,10686570,21232748,19261331,5015465,14116275,5677891],[1020829537,44118558,95311609,747313462,314243012,56633676,17412682,214009928,5168300,45473562,12441080,196780099,2962953,89381552,28531796,47038884,8843938,1646522,3794164,2695592,7362202,1689966,2380201,7646127,840251,404621],[0.6613201293193033,1.452318806272404,1.838530999491057,1.391471548099075,0.6814951206302013,2.195635504767005,1.145038880026044,7.423200955790053,1.004231069530674,1.757760180536209,2.503348260247524,1.080091881926691,0.2428229020549195,1.104881078011558,2.911627556449857,1.053269713968299,3.584877690715405,1.757697927475441,1.163705473559825,1.159759642467136,0.7290334571817335,1.22285598149846,0.6750503628075751,0.3514874548839341,0.7596968040021793,1.014760681004744]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Country_Region<\/th>\n      <th>cas_confirmes<\/th>\n      <th>cas_deces<\/th>\n      <th>cas_retablis<\/th>\n      <th>cas_actifs<\/th>\n      <th>avg_case_fatality_ratio<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"autoWidth":true,"dom":"Bfrtip","buttons":["copy","csv","excel","pdf","print"],"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Country_Region","targets":1},{"name":"cas_confirmes","targets":2},{"name":"cas_deces","targets":3},{"name":"cas_retablis","targets":4},{"name":"cas_actifs","targets":5},{"name":"avg_case_fatality_ratio","targets":6}],"order":[],"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-weight':'bold','color':'black','background-color':isNaN(parseFloat(value)) ? '' : value <= 100000 ? \"lightgreen\" : value <= 500000 ? \"green\" : value <= 1000000 ? \"orange\" : \"red\"});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-weight':'bold','color':'white','background-color':isNaN(parseFloat(value)) ? '' : value <= 5000 ? \"lightblue\" : value <= 20000 ? \"blue\" : value <= 50000 ? \"purple\" : \"darkred\"});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-weight':'bold','color':'black','background-color':isNaN(parseFloat(value)) ? '' : value <= 50000 ? \"red\" : value <= 200000 ? \"yellow\" : value <= 500000 ? \"lightyellow\" : \"green\"});\n}"},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<p>Graphiques comparatifs entre le monde entier et l’Union européenne
+(UE) :</p>
+<pre class="r"><code class="hljs"><span class="hljs-comment">#Calcul des pourcentages</span>
+<span class="hljs-keyword">library</span>(dplyr)
+<span class="hljs-keyword">library</span>(tidyr)
+<span class="hljs-keyword">library</span>(ggplot2)
+<span class="hljs-keyword">library</span>(purrr)
+
+<span class="hljs-comment"># Totaux mondiaux</span>
+world_totals &lt;- covid_summary %&gt;%
+  summarise(
+    cas_confirmes = sum(cas_confirmes, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_deces = sum( cas_deces, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_retablis = sum(cas_retablis, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_actifs = sum(cas_actifs, na.rm = <span class="hljs-literal">TRUE</span>)
+  )
+
+<span class="hljs-comment"># Totaux pour l'Union européenne</span>
+eu_totals &lt;- eu_summary %&gt;%
+  summarise(
+    cas_confirmes = sum(cas_confirmes, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_deces = sum(cas_deces, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_retablis = sum(cas_retablis, na.rm = <span class="hljs-literal">TRUE</span>),
+    cas_actifs = sum(cas_actifs, na.rm = <span class="hljs-literal">TRUE</span>)
+  )
+
+<span class="hljs-comment"># Fusionner les deux jeux de données </span>
+comparison &lt;- bind_rows(
+  world_totals %&gt;% mutate(Region = <span class="hljs-string">"Monde"</span>),
+  eu_totals %&gt;% mutate(Region = <span class="hljs-string">"Union européenne"</span>)
+) %&gt;%
+  pivot_longer(
+    cols = -Region,
+    names_to = <span class="hljs-string">"Variable"</span>,
+    values_to = <span class="hljs-string">"Value"</span>
+  ) %&gt;%
+  group_by(Variable) %&gt;%
+  mutate(Percentage = Value / sum(Value) * <span class="hljs-number">100</span>)
+
+<span class="hljs-comment"># Barplot comparatif pour toutes les variables</span>
+ggplot(comparison, aes(x = Variable, y = Percentage, fill = Region)) +
+  geom_bar(stat = <span class="hljs-string">"identity"</span>, position = <span class="hljs-string">"dodge"</span>) +
+  labs(
+    title = <span class="hljs-string">"Comparaison des indicateurs COVID-19 entre le monde et l'Union européenne"</span>,
+    x = <span class="hljs-string">"Variable"</span>,
+    y = <span class="hljs-string">"Pourcentage"</span>,
+    fill = <span class="hljs-string">"Région"</span>
+  ) +
+  theme_minimal() +
+  scale_fill_manual(values = c(<span class="hljs-string">"Monde"</span> = <span class="hljs-string">"orange"</span>, <span class="hljs-string">"Union européenne"</span> = <span class="hljs-string">"blue"</span>))</code></pre>
+<p><img src="./Data challenge_files/unnamed-chunk-6-1.png" width="672"></p>
+<p>Pie charts pour chaque variable :</p>
+<pre class="r"><code class="hljs"><span class="hljs-comment"># Fonction pour créer un pie chart pour chaque variable</span>
+create_pie_chart &lt;- <span class="hljs-keyword">function</span>(var_name) {
+  data &lt;- comparison %&gt;%
+    filter(Variable == var_name)
+  
+  ggplot(data, aes(x = <span class="hljs-string">""</span>, y = Percentage, fill = Region)) +
+    geom_col(width = <span class="hljs-number">1</span>) +
+    coord_polar(theta = <span class="hljs-string">"y"</span>) +
+    labs(
+      title = paste(<span class="hljs-string">"Répartition de"</span>, var_name, <span class="hljs-string">"dans le monde et l'UE"</span>),
+      fill = <span class="hljs-string">"Région"</span>
+    ) +
+    theme_void() +
+    scale_fill_manual(values = c(<span class="hljs-string">"Monde"</span> = <span class="hljs-string">"orange"</span>, <span class="hljs-string">"Union européenne"</span> = <span class="hljs-string">"blue"</span>))
+}
+
+<span class="hljs-comment"># Liste des variables</span>
+variables &lt;- unique(comparison$Variable)
+
+<span class="hljs-comment"># Générer et afficher les pie charts pour toutes les variables</span>
+pie_charts &lt;- map(variables, create_pie_chart)
+
+<span class="hljs-comment"># Afficher tous les graphiques dans une grille</span>
+<span class="hljs-keyword">library</span>(patchwork)</code></pre>
+<pre><code class="hljs">## Warning: le package 'patchwork' a été compilé avec la version R 4.4.2</code></pre>
+<pre class="r"><code class="hljs">wrap_plots(pie_charts, ncol = <span class="hljs-number">1</span>)</code></pre>
+<p><img src="./Data challenge_files/unnamed-chunk-7-1.png" width="672">
+Carte de repartition des cas dans l’UE :</p>
+<pre class="r"><code class="hljs"><span class="hljs-comment"># Chargement des bibliothèques nécessaires</span>
+<span class="hljs-keyword">library</span>(shiny)
+<span class="hljs-keyword">library</span>(leaflet)</code></pre>
+<pre><code class="hljs">## Warning: le package 'leaflet' a été compilé avec la version R 4.4.2</code></pre>
+<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(dplyr)
+
+<span class="hljs-comment"># Liste des pays de l'Union Européenne</span>
+ue_countries &lt;- c(
+  <span class="hljs-string">"Austria"</span>, <span class="hljs-string">"Belgium"</span>, <span class="hljs-string">"Bulgaria"</span>, <span class="hljs-string">"Croatia"</span>, <span class="hljs-string">"Cyprus"</span>, <span class="hljs-string">"Czech Republic"</span>,
+  <span class="hljs-string">"Denmark"</span>, <span class="hljs-string">"Estonia"</span>, <span class="hljs-string">"Finland"</span>, <span class="hljs-string">"France"</span>, <span class="hljs-string">"Germany"</span>, <span class="hljs-string">"Greece"</span>, 
+  <span class="hljs-string">"Hungary"</span>, <span class="hljs-string">"Ireland"</span>, <span class="hljs-string">"Italy"</span>, <span class="hljs-string">"Latvia"</span>, <span class="hljs-string">"Lithuania"</span>, <span class="hljs-string">"Luxembourg"</span>, 
+  <span class="hljs-string">"Malta"</span>, <span class="hljs-string">"Netherlands"</span>, <span class="hljs-string">"Poland"</span>, <span class="hljs-string">"Portugal"</span>, <span class="hljs-string">"Romania"</span>, <span class="hljs-string">"Slovakia"</span>, 
+  <span class="hljs-string">"Slovenia"</span>, <span class="hljs-string">"Spain"</span>, <span class="hljs-string">"Sweden"</span>
+)
+
+<span class="hljs-comment"># Préparation des données</span>
+covid_data_clean &lt;- covid_data %&gt;%
+  filter(Country_Region %<span class="hljs-keyword">in</span>% ue_countries) %&gt;%  <span class="hljs-comment"># Filtrer les pays de l'UE</span>
+  drop_na(Lat, Long_, Confirmed, Deaths, Active) %&gt;%  <span class="hljs-comment"># Supprimer les NA</span>
+  group_by(Country_Region) %&gt;%
+  summarise(
+    Lat = first(Lat),  <span class="hljs-comment"># Garder une latitude par pays</span>
+    Long_ = first(Long_),  <span class="hljs-comment"># Garder une longitude par pays</span>
+    Confirmed = sum(Confirmed, na.rm = <span class="hljs-literal">TRUE</span>),
+    Deaths = sum(Deaths, na.rm = <span class="hljs-literal">TRUE</span>),
+    Active = sum(Active, na.rm = <span class="hljs-literal">TRUE</span>),
+    .groups = <span class="hljs-string">"drop"</span>
+  )
+ui &lt;- fluidPage(
+  titlePanel(<span class="hljs-string">"Carte interactive des cas COVID-19 dans l'Union Européenne"</span>),
+  
+  sidebarLayout(
+    sidebarPanel(
+      <span class="hljs-comment"># Menu déroulant pour sélectionner l'indicateur à afficher</span>
+      selectInput(
+        <span class="hljs-string">"indicator"</span>, 
+        <span class="hljs-string">"Choisir un indicateur :"</span>, 
+        choices = c(
+          <span class="hljs-string">"Cas confirmés"</span> = <span class="hljs-string">"Confirmed"</span>,
+          <span class="hljs-string">"Décès"</span> = <span class="hljs-string">"Deaths"</span>,
+          <span class="hljs-string">"Cas actifs"</span> = <span class="hljs-string">"Active"</span>
+        ),
+        selected = <span class="hljs-string">"Confirmed"</span>
+      ),
+      <span class="hljs-comment"># Texte explicatif</span>
+      helpText(<span class="hljs-string">"Carte interactive des données COVID-19 dans les pays de l'Union Européenne. 
+               Sélectionnez un indicateur pour modifier la visualisation."</span>)
+    ),
+    
+    mainPanel(
+      <span class="hljs-comment"># Affichage de la carte</span>
+      leafletOutput(<span class="hljs-string">"map"</span>, height = <span class="hljs-string">"600px"</span>)
+    )
+  )
+)
+server &lt;- <span class="hljs-keyword">function</span>(input, output, session) {
+  <span class="hljs-comment"># Génération de la carte interactive</span>
+  output$map &lt;- renderLeaflet({
+    <span class="hljs-comment"># Palette de couleurs dynamique basée sur l'indicateur sélectionné</span>
+    pal &lt;- colorNumeric(<span class="hljs-string">"YlOrRd"</span>, domain = covid_data_clean[[input$indicator]])
+    
+    <span class="hljs-comment"># Création de la carte</span>
+    leaflet(data = covid_data_clean) %&gt;%
+      addTiles() %&gt;%  <span class="hljs-comment"># Ajouter une couche de fond</span>
+      addCircles(
+        lng = ~Long_, lat = ~Lat,  <span class="hljs-comment"># Coordonnées des pays</span>
+        weight = <span class="hljs-number">1</span>,
+        radius = ~get(input$indicator) / max(get(input$indicator), na.rm = <span class="hljs-literal">TRUE</span>) * <span class="hljs-number">500000</span>,
+        color = ~pal(get(input$indicator)),
+        popup = ~paste(
+          <span class="hljs-string">"&lt;strong&gt;Pays :&lt;/strong&gt;"</span>, Country_Region, <span class="hljs-string">"&lt;br&gt;"</span>,
+          <span class="hljs-string">"&lt;strong&gt;"</span>, input$indicator, <span class="hljs-string">" :&lt;/strong&gt;"</span>, get(input$indicator)
+        ),
+        fillOpacity = <span class="hljs-number">0.7</span>
+      ) %&gt;%
+      addLegend(
+        pal = pal, values = ~get(input$indicator),
+        title = paste(<span class="hljs-string">"Nombre de"</span>, tolower(input$indicator)),
+        position = <span class="hljs-string">"bottomright"</span>
+      ) %&gt;%
+      setView(lng = <span class="hljs-number">10</span>, lat = <span class="hljs-number">50</span>, zoom = <span class="hljs-number">4</span>)  <span class="hljs-comment"># Centrer la vue sur l'Europe</span>
+  })
+}
+<span class="hljs-comment"># Lancer l'application Shiny</span>
+shinyApp(ui = ui, server = server)</code></pre>
+<iframe width="100%" height="400" class="shiny-frame" src="./Data challenge_files/saved_resource.html"></iframe>
+<p>graphique (représenter une évolution dans le temps) :</p>
+<pre class="r"><code class="hljs"><span class="hljs-comment"># Charger les bibliothèques nécessaires</span>
+<span class="hljs-keyword">library</span>(shiny)
+<span class="hljs-keyword">library</span>(leaflet)
+<span class="hljs-keyword">library</span>(dplyr)
+<span class="hljs-keyword">library</span>(plotly)</code></pre>
+<pre><code class="hljs">## Warning: le package 'plotly' a été compilé avec la version R 4.4.2</code></pre>
+<pre><code class="hljs">## 
+## Attachement du package : 'plotly'</code></pre>
+<pre><code class="hljs">## L'objet suivant est masqué depuis 'package:ggplot2':
+## 
+##     last_plot</code></pre>
+<pre><code class="hljs">## L'objet suivant est masqué depuis 'package:stats':
+## 
+##     filter</code></pre>
+<pre><code class="hljs">## L'objet suivant est masqué depuis 'package:graphics':
+## 
+##     layout</code></pre>
+<pre class="r"><code class="hljs"><span class="hljs-comment"># Liste des pays de l'Union Européenne</span>
+ue_countries &lt;- c(
+  <span class="hljs-string">"Austria"</span>, <span class="hljs-string">"Belgium"</span>, <span class="hljs-string">"Bulgaria"</span>, <span class="hljs-string">"Croatia"</span>, <span class="hljs-string">"Cyprus"</span>, <span class="hljs-string">"Czech Republic"</span>,
+  <span class="hljs-string">"Denmark"</span>, <span class="hljs-string">"Estonia"</span>, <span class="hljs-string">"Finland"</span>, <span class="hljs-string">"France"</span>, <span class="hljs-string">"Germany"</span>, <span class="hljs-string">"Greece"</span>, 
+  <span class="hljs-string">"Hungary"</span>, <span class="hljs-string">"Ireland"</span>, <span class="hljs-string">"Italy"</span>, <span class="hljs-string">"Latvia"</span>, <span class="hljs-string">"Lithuania"</span>, <span class="hljs-string">"Luxembourg"</span>, 
+  <span class="hljs-string">"Malta"</span>, <span class="hljs-string">"Netherlands"</span>, <span class="hljs-string">"Poland"</span>, <span class="hljs-string">"Portugal"</span>, <span class="hljs-string">"Romania"</span>, <span class="hljs-string">"Slovakia"</span>, 
+  <span class="hljs-string">"Slovenia"</span>, <span class="hljs-string">"Spain"</span>, <span class="hljs-string">"Sweden"</span>
+)
+
+<span class="hljs-comment"># Préparer les données pour l'évolution temporelle</span>
+covid_data_time &lt;- covid_data %&gt;%
+  filter(Country_Region %<span class="hljs-keyword">in</span>% ue_countries) %&gt;%
+  drop_na(Last_Update, Confirmed, Deaths, Active) %&gt;%
+  mutate(Last_Update = as.Date(Last_Update)) %&gt;%
+  group_by(Country_Region, Last_Update) %&gt;%
+  summarise(
+    Confirmed = sum(Confirmed, na.rm = <span class="hljs-literal">TRUE</span>),
+    Deaths = sum(Deaths, na.rm = <span class="hljs-literal">TRUE</span>),
+    Active = sum(Active, na.rm = <span class="hljs-literal">TRUE</span>),
+    .groups = <span class="hljs-string">"drop"</span>
+  )
+
+<span class="hljs-comment"># Interface utilisateur (UI)</span>
+ui &lt;- fluidPage(
+  titlePanel(<span class="hljs-string">"Évolution temporelle des cas COVID-19 dans l'Union Européenne"</span>),
+  
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        <span class="hljs-string">"country"</span>, 
+        <span class="hljs-string">"Choisir un pays :"</span>, 
+        choices = unique(covid_data_time$Country_Region),
+        selected = <span class="hljs-string">"France"</span>
+      ),
+      selectInput(
+        <span class="hljs-string">"indicator"</span>, 
+        <span class="hljs-string">"Choisir un indicateur :"</span>, 
+        choices = c(
+          <span class="hljs-string">"Cas confirmés"</span> = <span class="hljs-string">"Confirmed"</span>,
+          <span class="hljs-string">"Décès"</span> = <span class="hljs-string">"Deaths"</span>,
+          <span class="hljs-string">"Cas actifs"</span> = <span class="hljs-string">"Active"</span>
+        ),
+        selected = <span class="hljs-string">"Confirmed"</span>
+      ),
+      helpText(<span class="hljs-string">"Sélectionnez un pays et un indicateur pour afficher son évolution dans le temps."</span>)
+    ),
+    
+    mainPanel(
+      plotlyOutput(<span class="hljs-string">"time_plot"</span>, height = <span class="hljs-string">"600px"</span>)
+    )
+  )
+)
+
+<span class="hljs-comment"># Serveur</span>
+server &lt;- <span class="hljs-keyword">function</span>(input, output, session) {
+  output$time_plot &lt;- renderPlotly({
+    country_data &lt;- covid_data_time %&gt;%
+      filter(Country_Region == input$country)
+    
+    plot_ly(
+      data = country_data,
+      x = ~Last_Update,
+      y = ~get(input$indicator),
+      type = <span class="hljs-string">'scatter'</span>,
+      mode = <span class="hljs-string">'lines+markers'</span>,
+      line = list(color = <span class="hljs-string">'blue'</span>),
+      marker = list(size = <span class="hljs-number">6</span>, color = <span class="hljs-string">'red'</span>)
+    ) %&gt;%
+      layout(
+        title = paste(<span class="hljs-string">"Évolution des"</span>, input$indicator, <span class="hljs-string">"pour"</span>, input$country),
+        xaxis = list(title = <span class="hljs-string">"Date"</span>),
+        yaxis = list(title = input$indicator)
+      )
+  })
+}
+
+<span class="hljs-comment"># Lancer l'application Shiny</span>
+shinyApp(ui = ui, server = server)</code></pre>
+<iframe width="100%" height="400" class="shiny-frame" src="./Data challenge_files/saved_resource(1).html"></iframe>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("section-TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+</div>
+  </div>
+
+
+<div id="shiny-disconnected-overlay"></div></body></html>
